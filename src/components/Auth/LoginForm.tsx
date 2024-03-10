@@ -55,12 +55,6 @@ const LoginForm: React.FC = () => {
                     Connexion
                   </button>
                 </form>
-                <p>
-                  Pendant la phase de test, les identifiants de connexion sont
-                  admin@test.fr/123456 et redacteur@test.fr/123456 et
-                  contributeur@test.fr/123456 (suivant le niveau de permission
-                  que vous souhaitez tester)
-                </p>
               </div>
             </div>
           </div>

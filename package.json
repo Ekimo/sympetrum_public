@@ -5,10 +5,9 @@
   "scripts": {
     "dev": "next dev",
     "prisma:deploy": "prisma migrate deploy && prisma generate",
-    "build": "npm run prisma:deploy && npm run seed && next build",
+    "build": "npm run prisma:deploy && next build",
     "start": "next start",
-    "lint": "next lint",
-    "seed": "node prisma/seed.js"
+    "lint": "next lint"
   },
   "dependencies": {
     "@aws-sdk/client-s3": "^3.515.0",
