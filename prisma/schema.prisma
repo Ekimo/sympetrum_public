@@ -1,0 +1,118 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "mysql"
+  url      = env("DATABASE_URL")
+}
+
+model User {
+  id       Int     @id @default(autoincrement())
+  name     String
+  email    String  @unique
+  password String
+  role Int @default(2)
+  articles Article[]
+  @@map("user")
+}
+
+model Odonate {
+  id       Int       @id @default(autoincrement())
+  scientific_name   String
+  author_and_year String
+  french_name String
+  suborder String
+  family String
+  link String @default("")
+  @@map("odonate")
+}
+
+model Publication {
+  id       Int       @id @default(autoincrement())
+  title String @default("")
+  author String @default("")
+  year String @default("")
+  journal String @default("")
+  book_citation String @default("")
+  volume String @default("")
+  number String @default("")
+  editor String @default("")
+  additional_comments String @default("")
+  link String @default("")
+  @@map("publication")
+}
+
+model Setting {
+  id       Int       @id @default(autoincrement())
+  members Int
+  odonates_data Int
+  actions Int
+  posted_publications Int
+  @@map("setting")
+}
+
+model Media {
+  id       Int       @id @default(autoincrement())
+  title String
+  url String
+  type String
+  @@map("media")
+}
+
+model Article {
+  id              Int           @id @default(autoincrement())
+  title           String        @unique
+  slug            String        @unique
+  image_url       String
+  intro           String        @db.Text
+  content         String        @db.LongText
+  publication_date DateTime
+  category_id      Int
+  category        Category      @relation(fields: [category_id], references: [id])
+  tags            Tag[]
+  visible        Boolean @default(true)
+  waiting_for_approbation Boolean @default(false)
+  circulaires Circulaire[]
+  author User @relation(fields: [authorId], references: [id])
+  authorId Int @default(1)
+
+  @@map("article")
+}
+
+model Category {
+  id       Int       @id @default(autoincrement())
+  name     String    @unique
+  slug     String    @unique
+  articles Article[]
+
+  @@map("category")
+}
+
+model Tag {
+  id       Int       @id @default(autoincrement())
+  name     String    @unique
+  slug     String    @unique
+  articles Article[]
+
+  @@map("tag")
+}
+
+model Newsletter {
+  id       Int       @id @default(autoincrement())
+  email     String    @unique
+
+  @@map("newsletter")
+}
+
+model Circulaire {
+  id       Int       @id @default(autoincrement())
+  title     String    @unique
+  slug     String    @unique
+  articles Article[]
+
+  @@map("circulaire")
+}
