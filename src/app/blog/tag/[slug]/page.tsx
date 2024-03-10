@@ -9,6 +9,20 @@ import {
 import BlogSidebar from "@/components/Blog/BlogSidebar";
 import { BlogSkeleton } from "@/components/Common/Skeletons";
 import { notFound } from "next/navigation";
+import type { Metadata } from "next";
+
+type Props = {
+  params: { slug: string };
+};
+
+export async function generateMetadata({ params }: Props): Promise<Metadata> {
+  const tag = await fetchOneTag(params.slug);
+  if (!tag) return {};
+  return {
+    title: "Groupe Sympetrum - " + tag.name,
+    description: "Tous nos articles concernant le tag " + tag.name,
+  };
+}
 
 export default async function Page({
   params,

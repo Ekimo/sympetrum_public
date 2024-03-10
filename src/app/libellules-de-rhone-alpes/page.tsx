@@ -8,6 +8,13 @@ import OdonateTable from "@/components/Common/OdonateTable";
 import Pagination from "@/components/Common/Pagination";
 import { TableSkeleton } from "@/components/Common/Skeletons";
 import Navbar from "@/components/Layouts/Navbar";
+import { Metadata } from "next";
+
+export const metadata: Metadata = {
+  title: "Groupe Sympetrum - Libellules de Rhône-Alpes",
+  description:
+    "Ici, vous découvrirez une liste exhaustive des espèces d'Odonates présentes dans notre région, allant des libellules majestueuses aux délicates demoiselles.",
+};
 
 export default async function Page({
   searchParams,

@@ -8,6 +8,13 @@ import Pagination from "@/components/Common/Pagination";
 import { TableSkeleton } from "@/components/Common/Skeletons";
 import PublicationIntroContent from "@/components/Bibliographie/PublicationIntroContent";
 import Navbar from "@/components/Layouts/Navbar";
+import type { Metadata } from "next";
+
+export const metadata: Metadata = {
+  title: "Groupe Sympetrum - Bibliographie",
+  description:
+    "Cette page est dédiée à la littérature et aux publications sur les libellules, regroupant des références clés pour les chercheurs et les passionnés.",
+};
 
 export default async function Page({
   searchParams,

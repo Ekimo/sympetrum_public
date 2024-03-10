@@ -8,6 +8,13 @@ import {
 } from "../../../libs/data/public/blog";
 import BlogSidebar from "@/components/Blog/BlogSidebar";
 import { BlogSkeleton } from "@/components/Common/Skeletons";
+import { Metadata } from "next";
+
+export const metadata: Metadata = {
+  title: "Groupe Sympetrum - Blog",
+  description:
+    "Découvrez les nouveautés de l'association Sympetrum : événements récents, dernières informations et points essentiels. Tout ce que vous devez savoir est ici.",
+};
 
 export default async function Page({
   searchParams,
