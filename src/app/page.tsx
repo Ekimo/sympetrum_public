@@ -7,7 +7,7 @@ import LatestNewsSlider from "../components/Common/LatestNewsSlider";
 import Navbar from "@/components/Layouts/Navbar";
 import CtaAreaDoc from "@/components/Common/CtaAreaDoc";
 
-export default function Page() {
+export default async function Page() {
   return (
     <>
       <Navbar />

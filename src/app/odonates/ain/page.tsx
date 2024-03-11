@@ -4,7 +4,7 @@ import Navbar from "@/components/Layouts/Navbar";
 import Link from "next/link";
 import LatestNewsSliderByCategory from "@/components/Common/LatestNewsSliderByCategory";
 
-export default function Page() {
+export default async function Page() {
   return (
     <>
       <Navbar />
