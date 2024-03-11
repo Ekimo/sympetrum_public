@@ -2,9 +2,11 @@ import React from "react";
 import SwiperNews from "./SwiperNews";
 import { fetchLastByCategory } from "../../../libs/data/public/blog";
 
-const LatestNewsSliderByCategory: React.FC<{ departement: string }> = async ({
+export default async function LatestNewsSliderByCategory({
   departement,
-}) => {
+}: {
+  departement: string;
+}) {
   const lastestNews = await fetchLastByCategory(departement);
 
   if (!lastestNews) {
@@ -16,6 +18,4 @@ const LatestNewsSliderByCategory: React.FC<{ departement: string }> = async ({
       <SwiperNews lastestNews={lastestNews?.articles} />
     </>
   );
-};
-
-export default LatestNewsSliderByCategory;
+}

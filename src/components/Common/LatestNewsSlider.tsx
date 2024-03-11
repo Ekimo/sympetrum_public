@@ -2,7 +2,7 @@ import React from "react";
 import SwiperNews from "./SwiperNews";
 import { fetchLastArticles } from "../../../libs/data/public/blog";
 
-const LatestNewsSlider: React.FC = async () => {
+export default async function LatestNewsSlider() {
   const lastestNews = await fetchLastArticles();
   return (
     <>
@@ -21,6 +21,4 @@ const LatestNewsSlider: React.FC = async () => {
       </div>
     </>
   );
-};
-
-export default LatestNewsSlider;
+}
