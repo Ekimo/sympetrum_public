@@ -226,7 +226,7 @@ export async function createArticle(
     authorId,
     authorRole
   );
-
+  revalidatePath("/");
   revalidatePath("/blog");
   revalidatePath("/admin/blog");
   redirect("/admin/blog");
@@ -402,6 +402,7 @@ export async function updateArticle(
     authorRole
   );
 
+  revalidatePath("/");
   revalidatePath("/blog");
   revalidatePath("/admin/blog");
   redirect("/admin/blog");
