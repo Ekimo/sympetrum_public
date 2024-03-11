@@ -35,9 +35,9 @@ const MainBanner: React.FC = () => {
                       data-aos-delay="200"
                     >
                       Le Groupe de Recherche et de Protection des Libellules
-                      Sympetrum est une association loi de 1901 se consacrant à
-                      la connaissance et à la conservation des libellules
-                      (Odonata) et de leurs habitats.
+                      Sympetrum se consacre à la connaissance et à la
+                      conservation des libellules (Odonata) et de leurs habitats
+                      qu&apos;ils soient naturels ou artificiels.
                     </p>
 
                     <Link

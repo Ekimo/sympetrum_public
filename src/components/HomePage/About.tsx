@@ -32,25 +32,26 @@ const About: React.FC = () => {
                 <div className="about-text">
                   <p>
                     Le Groupe de recherche et de protection des libellules
-                    Sympetrum se consacre à la connaissance et à la conservation
-                    des libellules (Odonata) et de leurs habitats qu&apos;ils
+                    Sympetrum est une association loi de 1901 qui se consacre à
+                    la connaissance et à la conservation des libellules
+                    (Odonata) ainsi que de leurs habitats, les zones humides,
+                    les cours d&apos;eau et les plans d&apos;eau, qu&apos;ils
                     soient naturels ou artificiels. Les travaux scientifiques de
-                    l&#39;association ont aussi pour objectif de suivre
-                    l&#39;évolutions des populations, permettant ainsi
-                    d&#39;alerter les décideurs et les gestionnaires sur
-                    l&#39;importance de la protection des zones humides, en
-                    utilisant les libellules comme bioindicatrices.
-                    L&#39;activité de notre association se concentre sur
-                    l&#39;ancienne région Rhône-Alpes avec près de 200 membres.
+                    l&apos;association visent également à suivre
+                    l&apos;évolution des populations et alerter ainsi les
+                    décideurs et les gestionnaires des enjeux présents sur ces
+                    habitats en utilisant les libellules comme bioindicateurs.
+                    L&apos;activité de notre association se concentre sur
+                    l&apos;ancienne région Rhône-Alpes avec près de 200 membres.
                   </p>
                   <h4>Notre histoire</h4>
                   <p>
-                    Active depuis plus de 35 ans, l’association est devenue un
+                    Active depuis plus de 35 ans, l&apos;association est un
                     acteur important de la conservation des odonates. Elle
                     participe ainsi activement aux principales politiques
                     publiques en faveur de la biodiversité, celles engagées par
-                    les services de l’État notamment. Notre association est
-                    agréée au titre de la protection de l’environnement.
+                    les services de l&apos;État notamment. Notre association est
+                    agréée au titre de la protection de l&apos;environnement.
                   </p>
                 </div>
 
@@ -58,17 +59,17 @@ const About: React.FC = () => {
                   <h4>Nos actions</h4>
                   <p>
                     Sympetrum est un acteur majeur dans les domaines de
-                    compétence suivants : Expertise des libellules et des zones
-                    humides ; Bancarisation et validation des données
-                    odonatologiques régionales ; Acteur du Plan national
-                    d’actions en faveur des Libellules ; Soutient technique aux
-                    différents partenaires (État, collectivités territoriales,
-                    agences de l’eau, gestionnaires d’aires protégées, muséums,
-                    associations…), Formation des membres de l&#39;association,
-                    des étudiants et du grand public (universités, associations
-                    et organismes divers) ; ainsi que la diffusion de la
-                    connaissance à travers des éditions, articles, relations
-                    presse et une bibliothèque spécialisée.
+                    compétence suivants : expertise des libellules et des zones
+                    humides; bancarisation et validation des données
+                    odonatologiques régionales; participation au Plan national
+                    d&apos;actions en faveur des Libellules; soutien technique
+                    aux différents partenaires (État, collectivités
+                    territoriales, agences de l&apos;eau, gestionnaires
+                    d&apos;aires protégées, muséums, associations…); formation
+                    des membres de l&apos;association, des étudiants et du grand
+                    public (universités, associations et organismes divers);
+                    diffusion de la connaissance (éditions, articles, relations
+                    avec la presse, bibliothèque spécialisée).
                   </p>
                 </div>
 

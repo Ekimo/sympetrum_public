@@ -9,7 +9,7 @@ import { redirect } from "next/navigation";
 
 export default async function Page() {
   const session = await getSession();
-  if (session.userData.role === 0) {
+  if (session.userData.role !== 0) {
     redirect("/admin");
   }
   const facts = await fetchFacts();
