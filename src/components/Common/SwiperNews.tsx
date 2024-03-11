@@ -52,7 +52,7 @@ const SwiperNews: React.FC<{ lastestNews: FullDataArticle[] }> = ({
                   </Link>
 
                   <div className="post-tag">
-                    <Link href={`/blog//categorie/${value.category.slug}`}>
+                    <Link href={`/blog/categorie/${value.category.slug}`}>
                       {value.category.name}
                     </Link>
                   </div>
