@@ -15,7 +15,7 @@ const Newsletter: React.FC = () => {
     } catch (error) {
       const errorMessage =
         error instanceof Error
-          ? error.message
+          ? "Cette adresse email est déjà enregistrée."
           : "Une erreur inconnue est survenue";
       toast.error(errorMessage);
     }
