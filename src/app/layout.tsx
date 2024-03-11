@@ -38,7 +38,7 @@ const saira = Roboto({
 });
 
 export const metadata: Metadata = {
-  title: "Groupe Sympetrum - Odonates en Rhône-Alpes & Dauphiné",
+  title: "Groupe Sympetrum - Odonates en Rhône-Alpes",
   description:
     "Le Groupe de recherche et de protection des libellules Sympetrum est une association qui se consacre à la connaissance et la conservation des libellules ainsi que leurs habitats, les zones humides.",
 };

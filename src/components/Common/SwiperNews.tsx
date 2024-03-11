@@ -42,7 +42,7 @@ const SwiperNews: React.FC<{ lastestNews: FullDataArticle[] }> = ({
             <SwiperSlide key={i}>
               <div className="single-blog-item">
                 <div className="blog-image">
-                  <Link href={`/blog/${value.category.slug}`}>
+                  <Link href={`/blog/${value.slug}`}>
                     <Image
                       src={value.image_url}
                       alt="image"
@@ -61,16 +61,11 @@ const SwiperNews: React.FC<{ lastestNews: FullDataArticle[] }> = ({
                 <div className="blog-post-content">
                   <span className="date">16 février</span>
                   <h3>
-                    <Link href={`/blog/${value.category.slug}`}>
-                      {value.title}
-                    </Link>
+                    <Link href={`/blog/${value.slug}`}>{value.title}</Link>
                   </h3>
 
                   <p>{value.intro.slice(0, 130)}...</p>
-                  <Link
-                    href={`/blog/${value.category.slug}`}
-                    className="read-more-btn"
-                  >
+                  <Link href={`/blog/${value.slug}`} className="read-more-btn">
                     Lire l&apos;article
                     <i className="fa-solid fa-angles-right"></i>
                   </Link>
