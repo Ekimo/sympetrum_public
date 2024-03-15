@@ -103,7 +103,6 @@ export async function fetchOneArticle(id: number) {
       where: {
         id: id,
         visible: true,
-        waiting_for_approbation: false,
       },
       include: {
         tags: true,
