@@ -248,7 +248,6 @@ export async function fetchOneArticleBySlug(slug: string) {
     const article = await prisma.article.findUnique({
       where: {
         visible: true,
-        waiting_for_approbation: false,
         slug,
       },
       include: {
