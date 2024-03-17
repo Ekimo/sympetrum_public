@@ -70,12 +70,21 @@ export async function POST(request: NextRequest) {
     const uniqueSuffix = `${Date.now()}-${Math.round(Math.random() * 1e9)}`;
     const slug = slugify(title.toString(), customOptions);
     const fileExtension = file.type === "application/pdf" ? ".pdf" : ".webp";
-    const newFileName = `${slug}-${uniqueSuffix}${fileExtension}`;
 
     if (file.type === "application/pdf") {
-      const awsURL = await uploadToS3(buffer, "application/pdf", newFileName);
+      const awsURL = await uploadToS3(
+        buffer,
+        "application/pdf",
+        `${slug}-${uniqueSuffix}${fileExtension}`
+      );
       return NextResponse.json({ fileUrl: awsURL, fileType: "PDF" });
     }
+
+    const metadata = await sharp(buffer).metadata();
+    const width = metadata.width;
+    const height = metadata.height;
+
+    const dimensionsSuffix = `${width}x${height}`;
 
     const compressedImageBuffer = await sharp(buffer)
       .webp({ quality: 100 })
@@ -83,7 +92,7 @@ export async function POST(request: NextRequest) {
     const awsURL = await uploadToS3(
       compressedImageBuffer,
       "image/webp",
-      newFileName
+      `${slug}-${uniqueSuffix}-${dimensionsSuffix}${fileExtension}`
     );
     return NextResponse.json({
       fileUrl: awsURL,

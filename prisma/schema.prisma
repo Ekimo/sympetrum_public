@@ -27,7 +27,7 @@ model Odonate {
   french_name String
   suborder String
   family String
-  link String @default("")
+  link String @default("") @db.Text
   @@map("odonate")
 }
 
@@ -42,7 +42,7 @@ model Publication {
   number String @default("")
   editor String @default("")
   additional_comments String @default("")
-  link String @default("")
+  link String @default("") @db.Text
   @@map("publication")
 }
 
@@ -58,7 +58,7 @@ model Setting {
 model Media {
   id       Int       @id @default(autoincrement())
   title String
-  url String
+  url String         @db.Text
   type String
   @@map("media")
 }
@@ -67,7 +67,7 @@ model Article {
   id              Int           @id @default(autoincrement())
   title           String        @unique
   slug            String        @unique
-  image_url       String
+  image_url       String        @db.Text
   intro           String        @db.Text
   content         String        @db.LongText
   publication_date DateTime

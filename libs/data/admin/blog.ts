@@ -3,6 +3,7 @@
 import prisma from "../../utils/prisma";
 import slugify from "slugify";
 import { ArticleWithCategoryName } from "../../utils/definitions";
+import { extractSize } from "../../utils/common";
 
 const customOptions = {
   lower: true,
@@ -150,9 +151,26 @@ export async function createDbArticle(
     if (title.trim().length >= 100 || intro.trim().length >= 160) {
       throw new Error("Titre ou texte d'intro trop long");
     }
+
     if (!url.trim()) {
       url =
-        "https://sympetrum.s3.eu-west-3.amazonaws.com/mediatheque/logo-sympetrum.4856c853.jpg";
+        "https://sympetrum.s3.eu-west-3.amazonaws.com/mediatheque/logosympetrum-53-600x400.webp";
+    }
+
+    const regex = /-(\d+)x(\d+)\.webp$/;
+    const matcher = url.match(regex);
+    let width = 0;
+    let height = 0;
+
+    if (matcher) {
+      width = parseInt(matcher[1], 10);
+      height = parseInt(matcher[2], 10);
+    }
+
+    if (width !== 600 && width !== 400) {
+      throw new Error(
+        "L'image principale doit respecter un format de 600x400px"
+      );
     }
 
     const slug = slugify(title, customOptions);
