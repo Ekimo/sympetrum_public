@@ -153,7 +153,7 @@ export async function createDbArticle(
 
     if (!url.trim()) {
       url =
-        "https://sympetrum.s3.eu-west-3.amazonaws.com/mediatheque/logosympetrum-53-600x400.webp";
+        "https://sympetrum.s3.eu-west-3.amazonaws.com/mediatheque/logosympetrum-53-800x600.webp";
     }
 
     const regex = /-(\d+)x(\d+)\.webp$/;
@@ -166,9 +166,9 @@ export async function createDbArticle(
       height = parseInt(matcher[2], 10);
     }
 
-    if (width !== 600 && width !== 400) {
+    if (width !== 800 && width !== 600) {
       throw new Error(
-        "L'image principale doit respecter un format de 600x400px"
+        "L'image principale doit respecter un format de 800x600px"
       );
     }
 
