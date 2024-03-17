@@ -3,7 +3,6 @@
 import prisma from "../../utils/prisma";
 import slugify from "slugify";
 import { ArticleWithCategoryName } from "../../utils/definitions";
-import { extractSize } from "../../utils/common";
 
 const customOptions = {
   lower: true,
