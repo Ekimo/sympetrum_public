@@ -7,7 +7,7 @@ import { ArticleWithCategoryName } from "../../utils/definitions";
 const customOptions = {
   lower: true,
   replacement: "-",
-  remove: /[*+~.()'"!:@]/g,
+  remove: /[*+~.()'"!:@?\/\[\],{}=<>;`^%$#|\\&\s]/g,
 };
 
 const ITEMS_PER_PAGE = 20;

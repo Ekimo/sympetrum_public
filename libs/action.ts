@@ -431,7 +431,7 @@ export async function removeUser(id: number) {
 // *******************************
 export async function removeArticle(id: number) {
   await softDeleteArticle(id);
-
+  revalidatePath("/", "layout");
   revalidatePath("/admin/blog");
   revalidatePath("/blog");
 }
