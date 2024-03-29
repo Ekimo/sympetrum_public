@@ -65,8 +65,9 @@ export default async function AdminHome() {
               Pour conserver une identitée visuelle propre, merci de respecter
               les différentes paramètres qui permettent de garder une cohérence
               entre les articles. Les images principales d&apos;articles doivent
-              faire 800x600 pixel, les images du corps de l&apos; peuvent faire
-              jusqu&apos;à 1920px de large sans autres restrictions. <br />
+              être en format paysage, les images du corps de l&apos; peuvent
+              faire jusqu&apos;à 1920px de large sans autres restrictions.{" "}
+              <br />
               Lors de l&apos;ajout d&apos;une image princpale ou d&apos;une
               image dans le corps d&apos;un article, merci d&apos;utiliser la
               médiathèque pour générer un lien en ajoutant votre fichier. Vous

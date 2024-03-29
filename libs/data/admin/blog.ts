@@ -156,22 +156,6 @@ export async function createDbArticle(
         "https://sympetrum.s3.eu-west-3.amazonaws.com/mediatheque/logosympetrum-53-800x600.webp";
     }
 
-    const regex = /-(\d+)x(\d+)\.webp$/;
-    const matcher = url.match(regex);
-    let width = 0;
-    let height = 0;
-
-    if (matcher) {
-      width = parseInt(matcher[1], 10);
-      height = parseInt(matcher[2], 10);
-    }
-
-    if (width !== 800 && width !== 600) {
-      throw new Error(
-        "L'image principale doit respecter un format de 800x600px"
-      );
-    }
-
     const slug = slugify(title, customOptions);
     const createdArticle = await prisma.article.create({
       data: {

@@ -3,8 +3,19 @@ import PageBanner from "../../../components/Common/PageBanner";
 import Navbar from "@/components/Layouts/Navbar";
 import Link from "next/link";
 import LatestNewsSliderByCategory from "@/components/Common/LatestNewsSliderByCategory";
+import { Metadata } from "next";
+import { fetchLastByCategory } from "../../../../libs/data/public/blog";
+
+export const dynamic = "force-dynamic";
+
+export const metadata: Metadata = {
+  title: "Groupe Sympetrum - Odonates de la Drôme",
+  description:
+    "Découvrez les différentes informations, espèces et synthèses sur les odonates de la Drôme.",
+};
 
 export default async function Page() {
+  const lastestNews = await fetchLastByCategory("drome");
   return (
     <>
       <Navbar />
@@ -83,7 +94,9 @@ export default async function Page() {
           <div className="section-title">
             <h2>Derniers articles Drôme</h2>
           </div>
-          <LatestNewsSliderByCategory departement="drome" />
+          {lastestNews?.articles && (
+            <LatestNewsSliderByCategory data={lastestNews.articles} />
+          )}
         </div>
       </div>
       <div className="container pb-70"></div>

@@ -1,21 +1,15 @@
 import React from "react";
 import SwiperNews from "./SwiperNews";
-import { fetchLastByCategory } from "../../../libs/data/public/blog";
+import { FullDataArticle } from "../../../libs/utils/definitions";
 
 export default async function LatestNewsSliderByCategory({
-  departement,
+  data,
 }: {
-  departement: string;
+  data: FullDataArticle[];
 }) {
-  const lastestNews = await fetchLastByCategory(departement);
-
-  if (!lastestNews) {
-    return "";
-  }
-
   return (
     <>
-      <SwiperNews lastestNews={lastestNews?.articles} />
+      <SwiperNews lastestNews={data} />
     </>
   );
 }

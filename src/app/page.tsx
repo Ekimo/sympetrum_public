@@ -7,6 +7,8 @@ import LatestNewsSlider from "../components/Common/LatestNewsSlider";
 import Navbar from "@/components/Layouts/Navbar";
 import CtaAreaDoc from "@/components/Common/CtaAreaDoc";
 
+export const dynamic = "force-dynamic";
+
 export default async function Page() {
   return (
     <>
