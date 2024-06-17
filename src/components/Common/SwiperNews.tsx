@@ -6,6 +6,8 @@ import { Swiper, SwiperSlide } from "swiper/react";
 import { Autoplay, Pagination } from "swiper/modules";
 import Image from "next/image";
 import { FullDataArticle } from "../../../libs/utils/definitions";
+import { format } from "date-fns";
+import { fr } from "date-fns/locale";
 
 const SwiperNews: React.FC<{ lastestNews: FullDataArticle[] }> = ({
   lastestNews,
@@ -59,7 +61,11 @@ const SwiperNews: React.FC<{ lastestNews: FullDataArticle[] }> = ({
                 </div>
 
                 <div className="blog-post-content">
-                  <span className="date">16 février</span>
+                  <span className="date">
+                    {format(new Date(value.publication_date), "d MMMM yyyy", {
+                      locale: fr,
+                    })}
+                  </span>
                   <h3>
                     <Link href={`/blog/${value.slug}`}>{value.title}</Link>
                   </h3>
