@@ -42,7 +42,7 @@ export default async function PublicationTable({
                   key={d.id}
                   d={d}
                   admin={admin}
-                  role={session.userData.role}
+                  role={session?.userData.role}
                   removePublication={removePublication}
                 />
               ))}

@@ -24,41 +24,130 @@ export default async function Page() {
         BGImage="/images/page-banner1.jpg"
       />
 
-      <div className="pb-40">
-        <div className="container">
-          <div className="service-details-info">
-            <div className="single-info-box">
-              <h4>Données</h4>
-              <span>61 espèces</span>
+    <div className="pb-40">
+      <div className="about-area ptb-100">
+            <div className="container">
+                <div className="row align-items-center">
+                    <div className="col-lg-7 col-md-12">
+                        <div className="about-content about-content-two">
+                            <div className="section-title">
+                                <h2>Le Rhône</h2>
+                                <p>Encadré par le Massif Central à l’ouest et les premiers contreforts du Jura à l’est, le département du Rhône est un véritable carrefour géographique. Avec le Beaujolais au nord, les Monts d’Or au centre, les Monts du Lyonnais au sud-ouest et la partie septentionale du Pilat au sud, notre département dispose d’une diversité de milieux significative. Chef-lieu du département, la ville de Lyon se situe à la confluence entre la Saône et le Rhône.</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div className="col-lg-5 col-md-12">
+                        <div className="about-image">
+                            <img alt="image" loading="lazy" width="500" height="750" decoding="async" data-nimg="1" className="rounded-10" src="/images/rhone.jpg" />
+                        </div>
+                    </div>
+                </div>
             </div>
-
-            <div className="single-info-box">
-              <h4>Liste rouge</h4>
-              <span>2016</span>
+        </div>
+        <div className="about-area pb-100">
+            <div className="container">
+                <div className="row align-items-center">
+                <div className="col-lg-5 col-md-12">
+                        <div className="about-image">
+                            <img alt="image" loading="lazy" width="500" height="750" decoding="async" data-nimg="1" className="rounded-10" src="/images/trithemis-annulata.jpg" />
+                        </div>
+                    </div>
+                    <div className="col-lg-7 col-md-12">
+                        <div className="about-content about-content-two">
+                            <div className="section-title">
+                                <h3>Contexte odonatologique</h3>
+                                <p>75 espèces ont été inventoriées dans le Rhône. Nos efforts de prospection se concentrent sur l’actualisation de la présence d’espèces à enjeux telles que Cordulegaster bidentata (classé VU en Rhône-Alpes, 2014) et sur les nouvelles espèces présentes sur le département telles que Trithemis annulata. Nos prospections nous amènent parfois également à découvrir la présence d’espèces considérées comme disparues du département à l’image de Sympetrum depressiusculum. Le département abrite une importante population de Coenagrion Mercuriale, espèce protégée et menacée (classée VU sur la liste rouge mondiale) essentiellement présente en Europe de l’ouest.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
             </div>
-
-            <div className="single-info-box">
-              <h4>Atlas</h4>
-              <span>2008,2004</span>
+        </div>
+        <div className="about-area pb-100">
+            <div className="container">
+                <div className="row align-items-center">
+                    <div className="col-lg-7 col-md-12">
+                        <div className="about-content about-content-two">
+                            <div className="section-title">
+                                <h3>Espèce emblématique du Rhône</h3>
+                                <p>Le gomphe à pattes jaunes (Stylurus flavipes) est une espèce protégée présente le long du Rhône et de la Saône. Sa sensibilité à la pollution thermique, son aire de répartition restreinte en France ainsi que sa discrétion au stade imago font de lui une espèce rare à observer. Elle fréquente les grandes rivières et les fleuves non-aménagés à fond sableux, limoneux ou vaseux. Ses populations régressent en cas de pollution.</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div className="col-lg-5 col-md-12">
+                        <div className="about-image">
+                            <img alt="image" loading="lazy" width="500" height="750" decoding="async" data-nimg="1" className="rounded-10" src="/images/stylurus-flavipes.jpg" />
+                        </div>
+                    </div>
+                </div>
             </div>
-
-            <div className="single-info-box">
-              <h4>Plan départemental</h4>
-              <span>2020</span>
+        </div>
+        <div className="about-area pb-100">
+            <div className="container">
+                <div className="row align-items-center">
+                <div className="col-lg-5 col-md-12">
+                        <div className="about-image">
+                            <img alt="image" loading="lazy" width="500" height="750" decoding="async" data-nimg="1" className="rounded-10" src="/images/team/team11.jpg" />
+                        </div>
+                    </div>
+                    <div className="col-lg-7 col-md-12">
+                        <div className="about-content about-content-two">
+                            <div className="section-title">
+                                <h3>Co-coordinateurs</h3>
+                                <p>Sympetrum compte 4 co-coordinateurs dans le Rhône. Julien BOUNIOL Aurélie COUET Hugo TAURU Hugo ROBUSCHI Contact :coordo69.sympetrum@gmail.com</p>
+                            </div>
+                            <div className="about-text">
+                                <ul>
+                                    <li><i className="fa-solid fa-circle-check"></i>Julien BOUNIOL</li>
+                                    <li><i className="fa-solid fa-circle-check"></i>Aurélie COUET</li>
+                                    <li><i className="fa-solid fa-circle-check"></i>Hugo TAURU</li>
+                                    <li><i className="fa-solid fa-circle-check"></i>Hugo ROBUSCHI</li>
+                                    <p>contact : coordo69.sympetrum@gmail.com</p>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
             </div>
-
-            <div className="single-info-box">
-              <h4>Coordination</h4>
-              <span>Le Mell Benjamin, Mesnil Samuel et Bouniol Julien</span>
+        </div>
+        <div className="about-area pb-100">
+            <div className="container">
+                <div className="row align-items-center">
+                    <div className="col-lg-7 col-md-12">
+                        <div className="about-content about-content-two">
+                            <div className="section-title">
+                                <h3>Activités</h3>
+                                <p>Ateliers de détermination d’exuvies, animations, prospections naturalistes, conférences... La délégation du Rhône vous propose de nombreuses activités autour des odonates. Pour annoncer nos activités, partager nos photos ou encore s’entraider à déterminer des espèces, nous utilisons l’application Discord. Lien d’invitation : <a href="https://discord.gg/JTWDUr886d" target="_blank">https://discord.gg/JTWDUr886d</a></p>
+                            </div>
+                        </div>
+                    </div>
+                    <div className="col-lg-5 col-md-12">
+                        <div className="about-image">
+                            <img alt="image" loading="lazy" width="500" height="750" decoding="async" data-nimg="1" className="rounded-10" src="/images/activites-rhone.jpg" />
+                        </div>
+                    </div>
+                </div>
             </div>
-          </div>
-          <p className="italic">
-            Anciens coordonnateurs : Karine Bastin, Quentin Schaming, Gwénaël
-            David et Daniel Grand (1943-2013).
-            <br />
-            Un nouvel Atlas départemental est en projet, suite à celui préparé
-            par Daniel Grand en 2004.
-          </p>
+        </div>
+        <div className="about-area pb-100">
+            <div className="container">
+                <div className="row align-items-center">
+                <div className="col-lg-5 col-md-12">
+                        <div className="about-image">
+                            <img alt="image" loading="lazy" width="500" height="750" decoding="async" data-nimg="1" className="rounded-10" src="/images/rhone-carto.jpg" />
+                        </div>
+                    </div>
+                    <div className="col-lg-7 col-md-12">
+                        <div className="about-content about-content-two">
+                            <div className="section-title">
+                                <h3>Zones à prospecter</h3>
+                                <p>Le département compte de nombreuses zones sur lesquelles nous manquons de données. Afin d’avoir une meilleure connaissance de la localisation précise des espèces et de leurs populations, voici une cartographie des zones prioritaires à prospecter. A bientôt sur le terrain.</p>
+                                <i>Légende : Nombre de données par commune (2015 - 2024)</i>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
         </div>
       </div>
 
@@ -70,129 +159,6 @@ export default async function Page() {
           {lastestNews?.articles && (
             <LatestNewsSliderByCategory data={lastestNews.articles} />
           )}
-        </div>
-      </div>
-      <div className="container pb-70"></div>
-
-      <div className="pb-40">
-        <div className="container">
-          <h3>Informations complémentaires</h3>
-
-          <p>
-            Liste rouge des Odonates du Rhône (David & al. 2016) : valide
-            jusqu&apos;en 2027 –{" "}
-            <Link
-              href="http://www.sympetrum.fr/pdf/larhone2016.pdf"
-              target="_blank"
-            >
-              PDF
-            </Link>
-            <br />
-            Versions antérieures (Deliry 2008, Deliry & al. 2013)
-          </p>
-        </div>
-      </div>
-      <div>
-        <div className="container">
-          <div className="table-responsive">
-            <table className="table table-striped">
-              <thead>
-                <tr>
-                  <th scope="col">Catégorie</th>
-                  <th scope="col">Espèce(s)</th>
-                </tr>
-              </thead>
-              <tbody>
-                <tr>
-                  <th>RE</th>
-                  <td className="italic">
-                    Platycnemis latipes, Sympetrum depressiusculum
-                  </td>
-                </tr>
-                <tr>
-                  <th>CR</th>
-                  <td className="italic">
-                    Coenagrion pulchellum,{" "}
-                    <span className="focus">Cordulegaster bidentata</span>,
-                    Erythromma najas,{" "}
-                    <span className="focus">Gomphus simillimus</span>,
-                    Somatochlora flavomaculata
-                  </td>
-                </tr>
-                <tr>
-                  <th>EN</th>
-                  <td className="italic">
-                    Aeshna isoceles, Lestes barbarus, Lestes sponsa,{" "}
-                    <span className="focus">Oxygastra curtisii</span>
-                  </td>
-                </tr>
-                <tr>
-                  <th>VU</th>
-                  <td className="italic">
-                    Boyeria irene, Brachytron pratense, Calopteryx
-                    haemorrhoidalis, Lestes virens,{" "}
-                    <span className="focus">Stylurus flavipes</span>
-                  </td>
-                </tr>
-                <tr>
-                  <th>NT</th>
-                  <td className="italic">
-                    Coenagrion mercuriale, Coenagrion scitulum, Cordulia aenea,
-                    Gomphus vulgatissimus, Ischnura pumilio
-                  </td>
-                </tr>
-                <tr>
-                  <th>DD</th>
-                  <td className="italic">
-                    <span className="focus">Coenagrion ornatum</span>,
-                    Leucorrhinia pectoralis, Sympetrum vulgatum
-                  </td>
-                </tr>
-                <tr>
-                  <th>NE</th>
-                  <td className="italic">
-                    Trithemis annulata (nouvelle en 2023)
-                  </td>
-                </tr>
-                <tr>
-                  <th>NA</th>
-                  <td className="italic">
-                    Calopteryx xanthostoma, Hemianax ephippiger, Leucorrhinia
-                    caudalis, Sympetrum flaveolum
-                  </td>
-                </tr>
-              </tbody>
-            </table>
-            <p className="focus">
-              Les espèces mises en évidence sont l’objet de suivis particuliers
-              dans le Rhône
-            </p>
-          </div>
-        </div>
-      </div>
-      <div className="container">
-        <div className="services-details-info">
-          <h3>Dernières synthèses</h3>
-
-          <ul>
-            <li>
-              Atlas – <strong>Deliry C. (coord.) 2008</strong> – Atlas illustré
-              des Libellules de la région Rhône-Alpes. – Dir. du Groupe
-              Sympetrum et Muséum d’Histoire Naturelle de Grenoble, éd.
-              Parthénope, Mèze : 404 pp.
-            </li>
-            <li>
-              Liste rouge –{" "}
-              <strong>Deliry C. & le Groupe Sympetrum 2016</strong> – Liste
-              d’Alerte des Odonates du Rhône – 2016. – Doc. GRPLS. -{" "}
-              <Link
-                href="http://www.sympetrum.fr/pdf/larhone2016.pdf"
-                target="_blank"
-              >
-                PDF
-              </Link>
-            </li>
-          </ul>
         </div>
       </div>
     </>

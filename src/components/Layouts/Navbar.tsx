@@ -64,7 +64,7 @@ const Navbar: React.FC = () => {
 
               <div className="others-options">
                 <Link
-                  href="https://www.helloasso.com/associations/groupe-sympetrum-grpls/adhesions/adhesion-2024-et-fin-2023"
+                  href="https://www.helloasso.com/associations/groupe-sympetrum-grpls"
                   target="_blank"
                   className="btn btn-primary"
                 >
