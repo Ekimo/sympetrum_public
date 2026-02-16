@@ -1,7 +1,6 @@
 import React from "react";
-import PageBanner from "../../../components/Common/PageBanner";
+import PageBanner from "@/components/Common/PageBanner";
 import Navbar from "@/components/Layouts/Navbar";
-import Link from "next/link";
 import LatestNewsSliderByCategory from "@/components/Common/LatestNewsSliderByCategory";
 import { Metadata } from "next";
 import { fetchLastByCategory } from "../../../../libs/data/public/blog";
@@ -9,9 +8,9 @@ import { fetchLastByCategory } from "../../../../libs/data/public/blog";
 export const dynamic = "force-dynamic";
 
 export const metadata: Metadata = {
-  title: "Groupe Sympetrum - Odonates de Savoie",
+  title: "Groupe Sympetrum - Odonates de la Savoie",
   description:
-    "Découvrez les différentes informations, espèces et synthèses sur les odonates de Savoie.",
+    "Découvrez les différentes informations, espèces et synthèses sur les odonates de la Savoie.",
 };
 
 export default async function Page() {
@@ -20,72 +19,103 @@ export default async function Page() {
     <>
       <Navbar />
       <PageBanner
-        pageTitle="Odonates de Savoie"
+        pageTitle="Odonates de la Savoie"
         BGImage="/images/page-banner1.jpg"
       />
 
       <div className="pb-40">
-        <div className="container">
-          <div className="service-details-info">
-            <div className="single-info-box">
-              <h4>Données</h4>
-              <span>68 espèces</span>
-            </div>
-
-            <div className="single-info-box">
-              <h4>Liste rouge</h4>
-              <span>2013</span>
-            </div>
-
-            <div className="single-info-box">
-              <h4>Atlas</h4>
-              <span>2008,2017</span>
-            </div>
-
-            <div className="single-info-box">
-              <h4>Plan départemental</h4>
-              <span>2014</span>
-            </div>
-
-            <div className="single-info-box">
-              <h4>Coordination</h4>
-              <span>Mouchené Dominique et Giusti Alexandre</span>
+        {/* Présentation */}
+        <div className="about-area ptb-100">
+          <div className="container">
+            <div className="row align-items-center">
+              <div className="col-lg-7 col-md-12">
+                <div className="about-content about-content-two">
+                  <div className="section-title">
+                    <h2>La Savoie</h2>
+                    <p>Le département de la Savoie (6 028 km²), au nord-est de la région AuRA, présente quatre grandes entités, les chaînons montagneux du Jura à l&apos;ouest dominant une zone de collines, le bassin molassique, les chaînes subalpines (Bauges et Chartreuse) séparées des massifs alpins par le sillon alpin.</p>
+                    <p>Le Rhône limite le département à l&apos;ouest, tandis que l&apos;Isère et ses affluents le traversent. Les lacs du Bourget et d&apos;Aiguebelette sont les principaux milieux lentiques auxquels s&apos;ajoutent quelques lacs de barrage, un grand nombre de petits lacs d&apos;altitude et quelques ballastières.</p>
+                    <p>Il faut ajouter de grands marais (Chautagne) et de nombreuses tourbières. Les autres milieux favorables aux libellules sont les mares qui ponctuent la campagne, ainsi que des mares prairiales d&apos;altitude.</p>
+                  </div>
+                </div>
+              </div>
+              <div className="col-lg-5 col-md-12">
+                <div className="about-image">
+                  <img alt="Calopteryx haemorrhoidalis" loading="lazy" width="500" height="750" className="rounded-10" src="/images/departements/savoie/calopteryx-haemorrhoidalis.jpg" />
+                  <span className="dept-credit">Crédits : Régis Krieg-Jacquier</span>
+                </div>
+              </div>
             </div>
           </div>
-          <p className="italic">
-            Anciens coordonnateurs : Laura Guyot, Thomas Roux, Régis
-            Krieg-Jacquier et Cyrille Deliry.
-          </p>
         </div>
-      </div>
-      <div className="pb-40">
-        <div className="container">
-          <h3>Partenariats principaux</h3>
 
-          <p>
-            <Link href="https://www.cen-savoie.org/" target="_blank">
-              Conservatoire d&apos;espaces naturels de Savoie
-            </Link>{" "}
-            – Parc National de la Vanoise (
-            <Link
-              href="http://biodiversite.vanoise-parcnational.fr/"
-              target="_blank"
-            >
-              BiodiVanoise
-            </Link>
-            ) –{" "}
-            <Link href="https://www.biodiversite-savoie.org/" target="_blank">
-              Observatoire de la Biodiversité Savoie
-            </Link>{" "}
-            (
-            <Link
-              href="https://www.biodiversite-savoie.org/partenaires/grpls"
-              target="_blank"
-            >
-              Signataire
-            </Link>
-            )
-          </p>
+        {/* Contexte odonatologique */}
+        <div className="about-area pb-100">
+          <div className="container">
+            <div className="row align-items-center">
+              <div className="col-lg-5 col-md-12">
+                <div className="about-image">
+                  <img alt="Boyeria irene" loading="lazy" width="500" height="750" className="rounded-10" src="/images/departements/savoie/boyeria-irene.jpg" />
+                  <span className="dept-credit">Crédits : Loup Noally</span>
+                </div>
+              </div>
+              <div className="col-lg-7 col-md-12">
+                <div className="about-content about-content-two">
+                  <div className="section-title">
+                    <h3>Contexte odonatologique</h3>
+                    <p>Un fleuve, de nombreuses rivières, des ruisseaux, des lacs, des tourbières et zones humides font de la Savoie un département riche en odonates (35 851 données à la fin de 2024 et 698 observateurs). Au total <strong>69 espèces</strong> sont connues du département.</p>
+                    <p>Les vallées profondes permettent aux espèces méridionales de remonter jusqu&apos;en Savoie comme <em>Calopteryx haemorrhoidalis</em> en 2012 et <em>Trithemis annulata</em> en 2024, alors que les zones de montagne sont le domaine de quelques espèces boréo-alpines.</p>
+                    <p>L&apos;ensemble du territoire est prospecté mais il reste des zones blanches. Nos efforts devront se porter sur certaines espèces rares ou menacées : <em>Leucorrhinia albifrons</em>, <em>L. caudalis</em>, <em>L. dubia</em>, <em>Cordulegaster bidentata</em>, <em>Ophiogomphus cecilia</em>, <em>Epitheca bimaculata</em>, <em>Boyeria irene</em> et <em>Somatochlora metallica</em>.</p>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        {/* Espèce emblématique */}
+        <div className="about-area pb-100">
+          <div className="container">
+            <div className="row align-items-center">
+              <div className="col-lg-7 col-md-12">
+                <div className="about-content about-content-two">
+                  <div className="section-title">
+                    <h3>Espèce emblématique de la Savoie</h3>
+                    <p>La Leucorrhine douteuse (<em>Leucorrhinia dubia</em>) est une espèce eurosibérienne dont la Savoie est un des bastions en France. Elle se rencontre essentiellement en altitude au-dessus de 700 m et elle peut atteindre 2 500 m.</p>
+                    <p>Cette espèce est inféodée aux tourbières et aux étangs végétalisés, acides et pauvres en poissons. Elle est vulnérable au changement climatique, au développement d&apos;activités piscicoles et touristiques ainsi qu&apos;à l&apos;intensification des activités pastorales intensives en montagne.</p>
+                    <p>La Leucorrhine douteuse est une des espèces ciblées par le programme CIMaE.</p>
+                  </div>
+                </div>
+              </div>
+              <div className="col-lg-5 col-md-12">
+                <div className="about-image">
+                  <img alt="Leucorrhinia dubia" loading="lazy" width="500" height="750" className="rounded-10" src="/images/departements/savoie/leucorrhinia-dubia.jpg" />
+                  <span className="dept-credit">Crédits : Loup Noally</span>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        {/* Zones à prospecter */}
+        <div className="about-area pb-100">
+          <div className="container">
+            <div className="row align-items-center">
+              <div className="col-lg-5 col-md-12">
+                <div className="about-image">
+                  <img alt="Cartographie Savoie" loading="lazy" width="500" height="750" className="rounded-10" src="/images/departements/carto/savoie.png" />
+                </div>
+              </div>
+              <div className="col-lg-7 col-md-12">
+                <div className="about-content about-content-two">
+                  <div className="section-title">
+                    <h3>Zones à prospecter</h3>
+                    <p>L&apos;ensemble du territoire est prospecté mais il reste des zones blanches et des communes sans données. Afin d&apos;avoir une meilleure connaissance de la localisation précise des espèces et de leurs populations, voici une cartographie des zones prioritaires à prospecter.</p>
+                    <p>À bientôt sur le terrain.</p>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
         </div>
       </div>
 
@@ -97,139 +127,6 @@ export default async function Page() {
           {lastestNews?.articles && (
             <LatestNewsSliderByCategory data={lastestNews.articles} />
           )}
-        </div>
-      </div>
-      <div className="container pb-70"></div>
-
-      <div className="pb-40">
-        <div className="container">
-          <h3>Informations complémentaires</h3>
-
-          <p>
-            Liste rouge des Odonates de Savoie (Deliry & al. 2013b) : valide
-            jusqu&apos;en 2024 –{" "}
-            <Link
-              href="http://sympetrum.fr/wp-content/uploads/2023/02/hn25bis.pdf"
-              target="_blank"
-            >
-              PDF
-            </Link>
-            <br />
-            Versions antérieures (Deliry 1987, 2006, 2008, Deliry & al. 2013a)
-          </p>
-        </div>
-      </div>
-      <div>
-        <div className="container">
-          <div className="table-responsive">
-            <table className="table table-striped">
-              <thead>
-                <tr>
-                  <th scope="col">Catégorie</th>
-                  <th scope="col">Espèce(s)</th>
-                </tr>
-              </thead>
-              <tbody>
-                <tr>
-                  <th>RE</th>
-                  <td className="italic">Nehalennia speciosa</td>
-                </tr>
-                <tr>
-                  <th>CR</th>
-                  <td>Aucune espèce concernée</td>
-                </tr>
-                <tr>
-                  <th>EN</th>
-                  <td className="italic">
-                    Coenagrion hastulatum, Coenagrion pulchellum, Lestes dryas,
-                    Sympetrum danae, Sympetrum depressiusculum
-                  </td>
-                </tr>
-                <tr>
-                  <th>VU</th>
-                  <td className="italic">
-                    Aeshna grandis, Cordulegaster bidentata, Erythromma najas,
-                    Gomphus pulchellus, Gomphus vulgatissimus, Orthetrum
-                    albistylum,{" "}
-                    <span className="focus">Oxygastra curtisii</span>,
-                    Somatochlora alpestris, Somatochlora arctica, Sympetrum
-                    flaveolum
-                  </td>
-                </tr>
-                <tr>
-                  <th>NT</th>
-                  <td className="italic">
-                    Aeshna isoceles, Aeshna juncea, Brachytron pratense,
-                    Coenagrion mercuriale{" "}
-                    <span className="reset-style">
-                      (statut probablement aggravé)
-                    </span>
-                    , Cordulia aenea, Ischnura pumilio, Leucorrhinia dubia,
-                    Somatochlora flavomaculata{" "}
-                    <span className="reset-style">
-                      (amélioration à considérer ?)
-                    </span>
-                  </td>
-                </tr>
-                <tr>
-                  <th>DD</th>
-                  <td className="italic">
-                    Boyeria irene, Gomphus simillimus{" "}
-                    <span className="reset-style">(DD 2015)</span>, Lestes
-                    barbarus
-                    <span className="reset-style">(probablement VU)</span>,
-                    Lestes sponsa{" "}
-                    <span className="reset-style">(probablement NT)</span>,
-                    Lestes virens{" "}
-                    <span className="reset-style">(probablement NT)</span>,
-                    Leucorrhinia albifrons, Ophiogomphus cecilia{" "}
-                    <span className="reset-style">(DD 2020)</span>, Stylurus
-                    flavipes <span className="reset-style">(DD 2019)</span>,
-                    Sympetrum meridionale, Sympetrum pedemontanum{" "}
-                    <span className="reset-style">(probablement NA)</span>,
-                    Sympetrum vulgatum{" "}
-                    <span className="reset-style">(probablement EN)</span>
-                  </td>
-                </tr>
-                <tr>
-                  <th>NA</th>
-                  <td className="italic">
-                    Calopteryx haemorrhoidalis, Coenagrion scitulum, Hemianax
-                    ephippiger, Leucorrhinia pectoralis
-                  </td>
-                </tr>
-              </tbody>
-            </table>
-            <p className="focus">
-              Les espèces mises en évidence sont l&apos;objet de suivis
-              particuliers en Savoie
-            </p>
-          </div>
-        </div>
-      </div>
-      <div className="container">
-        <div className="services-details-info">
-          <h3>Dernières synthèses</h3>
-
-          <ul>
-            <li>
-              <strong>Deliry C. (coord.) 2008</strong> – Atlas illustré des
-              Libellules de la région Rhône-Alpes. – Dir. du Groupe Sympetrum et
-              Muséum d&apos;Histoire Naturelle de Grenoble, éd. Parthénope, Mèze
-              : 404 pp.
-            </li>
-            <li>
-              <strong>Deliry C. & le Groupe Sympetrum 2013b</strong> – Liste
-              d&apos;alerte des Odonates de Savoie. 2013. – PNAO (2011-2015). –
-              Doc. GRPLS. –{" "}
-              <Link
-                href="http://sympetrum.fr/pdf/lasavoie2013.pdf"
-                target="_blank"
-              >
-                PDF
-              </Link>
-            </li>
-          </ul>
         </div>
       </div>
     </>
