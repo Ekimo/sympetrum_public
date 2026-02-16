@@ -6157,3 +6157,147 @@ span.new {
     }
   }
 }
+
+/*==========================================
+Department Pages CSS
+===========================================*/
+.dept-section {
+  padding-bottom: 20px;
+}
+
+.dept-section-divider {
+  max-width: 200px;
+  margin: 30px auto 50px;
+  hr {
+    border: none;
+    border-top: 2px solid #333;
+    opacity: 0.6;
+  }
+}
+
+.dept-section-text {
+  p {
+    line-height: 1.8;
+    margin-bottom: 15px;
+  }
+}
+
+.dept-section-images {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+  align-items: center;
+}
+
+.dept-section-images--multi {
+  .dept-section-img-wrapper {
+    img {
+      max-height: 200px;
+      width: auto;
+      max-width: 100%;
+      object-fit: cover;
+    }
+  }
+}
+
+.dept-section-img-wrapper {
+  position: relative;
+  text-align: center;
+
+  img {
+    width: 100%;
+    height: auto;
+    object-fit: cover;
+  }
+}
+
+.dept-section-img--circle {
+  img {
+    width: 280px;
+    height: 280px;
+    border-radius: 50%;
+    object-fit: cover;
+  }
+}
+
+.dept-section-credit {
+  display: block;
+  margin-top: 6px;
+  font-size: 12px;
+  color: #999;
+  font-style: italic;
+  text-align: right;
+}
+
+.dept-coordinators-list {
+  list-style: none;
+  padding: 0;
+  margin: 15px 0;
+
+  li {
+    margin-bottom: 6px;
+    font-weight: 500;
+
+    i {
+      color: $main-color;
+      margin-right: 8px;
+    }
+  }
+}
+
+.dept-contact-link {
+  display: inline-block;
+  margin-top: 10px;
+  font-weight: 600;
+
+  a {
+    color: $main-color;
+    text-decoration: none;
+    &:hover {
+      text-decoration: underline;
+    }
+  }
+}
+
+.dept-page-wrapper {
+  padding-bottom: 40px;
+}
+
+.dept-first-section {
+  padding-top: 60px;
+}
+
+// Responsive adjustments for department pages
+@media (max-width: 991px) {
+  .dept-section {
+    .about-content-two {
+      padding-left: 0;
+      margin-top: 25px;
+    }
+  }
+
+  .dept-section-img--circle img {
+    width: 220px;
+    height: 220px;
+  }
+
+  .dept-section-images--multi .dept-section-img-wrapper img {
+    max-height: 160px;
+  }
+
+  // On mobile, ensure text comes before image for image-right sections
+  .dept-section .row {
+    flex-direction: column;
+  }
+}
+
+@media (max-width: 576px) {
+  .dept-section-img--circle img {
+    width: 180px;
+    height: 180px;
+  }
+
+  .dept-section-divider {
+    margin: 20px auto 35px;
+  }
+}
