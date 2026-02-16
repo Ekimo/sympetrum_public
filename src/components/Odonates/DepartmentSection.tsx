@@ -29,9 +29,15 @@ export default function DepartmentSection({
 }: DepartmentSectionProps) {
   const TitleTag = titleLevel;
   const hasImages = images && images.length > 0;
+  const isMulti = hasImages && images.length > 1;
 
-  const textCol = hasImages ? "col-lg-7 col-md-12" : "col-lg-12";
-  const imageCol = "col-lg-5 col-md-12";
+  // Multi-image sections: smaller image column, bigger text column
+  const textCol = hasImages
+    ? isMulti
+      ? "col-lg-8 col-md-12"
+      : "col-lg-7 col-md-12"
+    : "col-lg-12";
+  const imageCol = isMulti ? "col-lg-4 col-md-12" : "col-lg-5 col-md-12";
 
   const textBlock = (
     <div className={textCol}>
@@ -47,7 +53,7 @@ export default function DepartmentSection({
   const imageBlock = hasImages ? (
     <div className={imageCol}>
       <div
-        className={`dept-section-images ${images.length > 1 ? "dept-section-images--multi" : ""}`}
+        className={`dept-section-images ${isMulti ? "dept-section-images--multi" : ""}`}
       >
         {images.map((img, i) => (
           <div
@@ -58,15 +64,19 @@ export default function DepartmentSection({
               src={img.src}
               alt={img.alt}
               loading="lazy"
-              width={imageShape === "circle" ? 300 : 600}
-              height={imageShape === "circle" ? 300 : 400}
+              width={imageShape === "circle" ? 300 : isMulti ? 280 : 600}
+              height={imageShape === "circle" ? 300 : isMulti ? 180 : 400}
               className={imageShape === "circle" ? "" : "rounded-10"}
             />
-            {img.credit && (
-              <span className="dept-section-credit">
-                Cr&eacute;dits : {img.credit}
-              </span>
-            )}
+            <span className="dept-section-img-label">
+              <em>{img.alt}</em>
+              {img.credit && (
+                <>
+                  {" "}
+                  — Cr&eacute;dits : {img.credit}
+                </>
+              )}
+            </span>
           </div>
         ))}
       </div>
