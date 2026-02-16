@@ -101,7 +101,7 @@ export default async function Page() {
             <div className="row align-items-center">
               <div className="col-lg-5 col-md-12">
                 <div className="about-image">
-                  <img alt="Cartographie des zones à prospecter dans l'Ain" loading="lazy" width="500" height="750" className="rounded-10" src="/images/departements/carto/ain.jpg" />
+                  <img alt="Cartographie des zones à prospecter dans l'Ain" loading="lazy" width="500" height="750" className="rounded-10" src="/images/departements/carto/ain.png" />
                 </div>
               </div>
               <div className="col-lg-7 col-md-12">

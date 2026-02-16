@@ -153,7 +153,7 @@ export default async function Page() {
             <div className="row align-items-center">
               <div className="col-lg-5 col-md-12">
                 <div className="about-image">
-                  <img alt="Cartographie Ardèche" loading="lazy" width="500" height="750" className="rounded-10" src="/images/departements/carto/ardeche.jpg" />
+                  <img alt="Cartographie Ardèche" loading="lazy" width="500" height="750" className="rounded-10" src="/images/departements/carto/ardeche.png" />
                 </div>
               </div>
               <div className="col-lg-7 col-md-12">
