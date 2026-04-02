@@ -26,6 +26,9 @@ export default function AdminNewsletter({
     errors: string[];
   } | null>(null);
   const [isLoading, setIsLoading] = useState(false);
+  const [search, setSearch] = useState("");
+  const [currentPage, setCurrentPage] = useState(1);
+  const ITEMS_PER_PAGE = 50;
   const router = useRouter();
 
   // ---- EXPORT CSV ----
@@ -96,22 +99,24 @@ export default function AdminNewsletter({
         return;
       }
 
-      // Trouver la colonne Email (colonne 16 dans le format HelloAsso, index 15)
-      const header = lines[0].split(";");
+      // Détecter le séparateur (point-virgule ou virgule)
+      const separator = lines[0].includes(";") ? ";" : ",";
+
+      const header = lines[0].split(separator);
       let emailIndex = header.findIndex(
-        (h) => h.trim().toLowerCase() === "email"
+        (h) => h.trim().toLowerCase().replace(/"/g, "") === "email"
       );
 
-      // Fallback : chercher "email payeur"
+      // Fallback : chercher une colonne contenant "email"
       if (emailIndex === -1) {
         emailIndex = header.findIndex((h) =>
-          h.trim().toLowerCase().includes("email")
+          h.trim().toLowerCase().replace(/"/g, "").includes("email")
         );
       }
 
       if (emailIndex === -1) {
         toast.error(
-          'Colonne "Email" introuvable dans le fichier. Vérifiez que le fichier provient bien de HelloAsso.'
+          'Colonne "Email" introuvable dans le fichier. Le fichier doit contenir une colonne avec "Email" en en-tête.'
         );
         setIsLoading(false);
         return;
@@ -119,8 +124,8 @@ export default function AdminNewsletter({
 
       const extractedEmails: string[] = [];
       for (let i = 1; i < lines.length; i++) {
-        const cols = lines[i].split(";");
-        const email = cols[emailIndex]?.trim();
+        const cols = lines[i].split(separator);
+        const email = cols[emailIndex]?.trim().replace(/"/g, "");
         if (email) {
           extractedEmails.push(email);
         }
@@ -209,11 +214,11 @@ export default function AdminNewsletter({
             marginBottom: "20px",
           }}
         >
-          <h4>Importer depuis HelloAsso</h4>
+          <h4>Importer un fichier CSV</h4>
           <p style={{ color: "#666", fontSize: "14px" }}>
-            Sélectionnez le fichier CSV exporté depuis HelloAsso (menu Adhésions
-            &gt; Exporter). Les adresses email seront extraites
-            automatiquement. Les doublons sont ignorés.
+            Fonctionne avec le fichier exporté depuis HelloAsso (menu Adhésions
+            &gt; Exporter) ou tout fichier CSV contenant une colonne
+            &quot;Email&quot;. Les doublons sont ignorés automatiquement.
           </p>
           <input
             type="file"
@@ -294,37 +299,127 @@ export default function AdminNewsletter({
         )}
 
         {/* ---- LISTE ---- */}
-        <div className="table-responsive">
-          <table className="table table-striped">
-            <thead>
-              <tr>
-                <th>#</th>
-                <th>Email</th>
-                <th style={{ textAlign: "right" }}>Action</th>
-              </tr>
-            </thead>
-            <tbody>
-              {emails.map((e, i) => (
-                <tr key={e.id}>
-                  <td>{i + 1}</td>
-                  <td>{e.email}</td>
-                  <td style={{ textAlign: "right" }}>
-                    <button
-                      onClick={() => handleDelete(e.id, e.email)}
-                      style={{
-                        border: "none",
-                        background: "none",
-                        cursor: "pointer",
-                      }}
-                    >
-                      <i className="fa-solid fa-trash-can table-action"></i>
-                    </button>
-                  </td>
-                </tr>
-              ))}
-            </tbody>
-          </table>
+        <div style={{ marginBottom: "15px" }}>
+          <input
+            type="text"
+            value={search}
+            onChange={(e) => {
+              setSearch(e.target.value);
+              setCurrentPage(1);
+            }}
+            placeholder="Rechercher une adresse..."
+            className="form-control"
+            style={{ maxWidth: "400px" }}
+          />
         </div>
+
+        {(() => {
+          const filtered = emails.filter((e) =>
+            e.email.toLowerCase().includes(search.toLowerCase())
+          );
+          const totalPages = Math.ceil(filtered.length / ITEMS_PER_PAGE);
+          const paginated = filtered.slice(
+            (currentPage - 1) * ITEMS_PER_PAGE,
+            currentPage * ITEMS_PER_PAGE
+          );
+
+          return (
+            <>
+              <p style={{ color: "#666", fontSize: "14px" }}>
+                {filtered.length} résultat(s)
+                {search && ` pour "${search}"`}
+              </p>
+              <div className="table-responsive">
+                <table className="table table-striped">
+                  <thead>
+                    <tr>
+                      <th>#</th>
+                      <th>Email</th>
+                      <th style={{ textAlign: "right" }}>Action</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    {paginated.map((e, i) => (
+                      <tr key={e.id}>
+                        <td>
+                          {(currentPage - 1) * ITEMS_PER_PAGE + i + 1}
+                        </td>
+                        <td>{e.email}</td>
+                        <td style={{ textAlign: "right" }}>
+                          <button
+                            onClick={() => handleDelete(e.id, e.email)}
+                            style={{
+                              border: "none",
+                              background: "none",
+                              cursor: "pointer",
+                            }}
+                          >
+                            <i className="fa-solid fa-trash-can table-action"></i>
+                          </button>
+                        </td>
+                      </tr>
+                    ))}
+                  </tbody>
+                </table>
+              </div>
+
+              {totalPages > 1 && (
+                <div
+                  style={{
+                    display: "flex",
+                    gap: "5px",
+                    justifyContent: "center",
+                    marginTop: "15px",
+                  }}
+                >
+                  <button
+                    onClick={() => setCurrentPage((p) => Math.max(1, p - 1))}
+                    disabled={currentPage === 1}
+                    className="btn btn-secondary"
+                    style={{ padding: "5px 12px" }}
+                  >
+                    &laquo;
+                  </button>
+                  {Array.from({ length: totalPages }, (_, i) => i + 1)
+                    .filter(
+                      (p) =>
+                        p === 1 ||
+                        p === totalPages ||
+                        Math.abs(p - currentPage) <= 2
+                    )
+                    .map((p, i, arr) => (
+                      <React.Fragment key={p}>
+                        {i > 0 && arr[i - 1] !== p - 1 && (
+                          <span style={{ padding: "5px 8px" }}>...</span>
+                        )}
+                        <button
+                          onClick={() => setCurrentPage(p)}
+                          className={
+                            p === currentPage
+                              ? "btn btn-primary"
+                              : "btn btn-secondary"
+                          }
+                          style={{ padding: "5px 12px" }}
+                        >
+                          {p}
+                        </button>
+                      </React.Fragment>
+                    ))}
+                  <button
+                    onClick={() =>
+                      setCurrentPage((p) => Math.min(totalPages, p + 1))
+                    }
+                    disabled={currentPage === totalPages}
+                    className="btn btn-secondary"
+                    style={{ padding: "5px 12px" }}
+                  >
+                    &raquo;
+                  </button>
+                </div>
+              )}
+            </>
+          );
+        })()}
       </div>
     </div>
   );
