@@ -33,6 +33,11 @@ export default function AdminSidebar({ role }: { role: number }) {
             <li>
               <Link href="/admin/blog">Blog</Link>
             </li>
+            {role == 0 && (
+              <li>
+                <Link href="/admin/departements">Pages départements</Link>
+              </li>
+            )}
             {role !== 2 && (
               <li>
                 <Link href="/admin/odonates">Libellules de Rhône-Alpes</Link>

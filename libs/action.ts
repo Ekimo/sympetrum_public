@@ -27,6 +27,14 @@ import {
 import he from "he";
 import { addDbUserToNewsletter } from "./data/public/common";
 import { createDbCirculaire } from "./data/admin/circulaires";
+import {
+  createDbDepartmentSection,
+  updateDbDepartmentSection,
+  deleteDbDepartmentSection,
+  reorderDbDepartmentSections,
+  getNextPosition,
+} from "./data/admin/departments";
+import { DEPARTMENTS } from "./utils/departments";
 
 // FORM VALIDATION
 const FormCreateOdonateSchema = z.object({
@@ -96,6 +104,14 @@ const FormCreateUserSchema = z.object({
   role: z.coerce.number(),
 });
 const CreateUser = FormCreateUserSchema.omit({});
+// **************************************
+const FormDepartmentSectionSchema = z.object({
+  title: z.string().min(1),
+  image_url: z.string(),
+  image_alt: z.string(),
+  image_credit: z.string(),
+});
+const CreateDepartmentSection = FormDepartmentSectionSchema;
 // !FORM VALIDATION
 
 // CREATE ACTIONS
@@ -435,7 +451,92 @@ export async function removeArticle(id: number) {
   revalidatePath("/admin/blog");
   revalidatePath("/blog");
 }
+// *******************************
+export async function removeDepartmentSection(
+  id: number,
+  departmentSlug: string
+) {
+  await deleteDbDepartmentSection(id);
+
+  revalidatePath(`/odonates/${departmentSlug}`);
+  revalidatePath(`/admin/departements/${departmentSlug}`);
+}
 // !DELETE ACTIONS
+
+// DEPARTMENT SECTION ACTIONS
+export async function createDepartmentSection(
+  departmentSlug: string,
+  formData: FormData,
+  content: string
+) {
+  if (!DEPARTMENTS[departmentSlug]) {
+    throw new Error("Département invalide.");
+  }
+
+  const { title, image_url, image_alt, image_credit } =
+    CreateDepartmentSection.parse({
+      title: formData.get("title"),
+      image_url: formData.get("image_url"),
+      image_alt: formData.get("image_alt"),
+      image_credit: formData.get("image_credit"),
+    });
+
+  const escapedContent = he.escape(content);
+  const position = await getNextPosition(departmentSlug);
+
+  await createDbDepartmentSection({
+    department_slug: departmentSlug,
+    position,
+    title,
+    content: escapedContent,
+    image_url,
+    image_alt,
+    image_credit,
+  });
+
+  revalidatePath(`/odonates/${departmentSlug}`);
+  redirect(`/admin/departements/${departmentSlug}`);
+}
+
+export async function updateDepartmentSection(
+  id: number,
+  departmentSlug: string,
+  formData: FormData,
+  content: string
+) {
+  const { title, image_url, image_alt, image_credit } =
+    CreateDepartmentSection.parse({
+      title: formData.get("title"),
+      image_url: formData.get("image_url"),
+      image_alt: formData.get("image_alt"),
+      image_credit: formData.get("image_credit"),
+    });
+
+  const escapedContent = he.escape(content);
+
+  await updateDbDepartmentSection(id, {
+    title,
+    content: escapedContent,
+    image_url,
+    image_alt,
+    image_credit,
+  });
+
+  revalidatePath(`/odonates/${departmentSlug}`);
+  redirect(`/admin/departements/${departmentSlug}`);
+}
+
+export async function reorderDepartmentSections(
+  orderedIds: number[],
+  departmentSlug: string
+) {
+  const updates = orderedIds.map((id, index) => ({ id, position: index }));
+  await reorderDbDepartmentSections(updates);
+
+  revalidatePath(`/odonates/${departmentSlug}`);
+  revalidatePath(`/admin/departements/${departmentSlug}`);
+}
+// !DEPARTMENT SECTION ACTIONS
 
 // AUTHENTICATE ACTIONS
 export async function authUser(email: string, password: string) {

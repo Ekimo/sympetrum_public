@@ -139,3 +139,22 @@ export type FullDataCirculaire = {
   slug: string;
   articles: ArticleWithoutTag[];
 };
+
+export type DepartmentSection = {
+  id: number;
+  department_slug: string;
+  position: number;
+  title: string;
+  content: string;
+  image_url: string;
+  image_alt: string;
+  image_credit: string;
+};
+
+export type DepartmentConfig = {
+  slug: string;
+  name: string;
+  pageTitle: string;
+  metaDescription: string;
+  categorySlug: string;
+};

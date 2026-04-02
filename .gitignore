@@ -28,6 +28,7 @@ yarn-error.log*
 # local env files
 .env*.local
 .env
+backup_prod_2026-04-02.sql
 
 # vercel
 .vercel
@@ -39,3 +40,6 @@ next-env.d.ts
 .data
 /data
 /scripts
+
+# backups
+*.sql
