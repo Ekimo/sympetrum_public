@@ -34,7 +34,17 @@ import {
   reorderDbDepartmentSections,
   getNextPosition,
 } from "./data/admin/departments";
-import { DEPARTMENTS } from "./utils/departments";
+import { DEPARTMENTS, DEPARTMENT_SLUGS } from "./utils/departments";
+
+function getPublicPath(slug: string) {
+  return DEPARTMENT_SLUGS.includes(slug) ? `/odonates/${slug}` : `/${slug}`;
+}
+
+function getAdminPath(slug: string) {
+  return DEPARTMENT_SLUGS.includes(slug)
+    ? `/admin/departements/${slug}`
+    : `/admin/${slug}`;
+}
 
 // FORM VALIDATION
 const FormCreateOdonateSchema = z.object({
@@ -458,8 +468,8 @@ export async function removeDepartmentSection(
 ) {
   await deleteDbDepartmentSection(id);
 
-  revalidatePath(`/odonates/${departmentSlug}`);
-  revalidatePath(`/admin/departements/${departmentSlug}`);
+  revalidatePath(getPublicPath(departmentSlug));
+  revalidatePath(getAdminPath(departmentSlug));
 }
 // !DELETE ACTIONS
 
@@ -494,8 +504,8 @@ export async function createDepartmentSection(
     image_credit,
   });
 
-  revalidatePath(`/odonates/${departmentSlug}`);
-  redirect(`/admin/departements/${departmentSlug}`);
+  revalidatePath(getPublicPath(departmentSlug));
+  redirect(getAdminPath(departmentSlug));
 }
 
 export async function updateDepartmentSection(
@@ -522,8 +532,8 @@ export async function updateDepartmentSection(
     image_credit,
   });
 
-  revalidatePath(`/odonates/${departmentSlug}`);
-  redirect(`/admin/departements/${departmentSlug}`);
+  revalidatePath(getPublicPath(departmentSlug));
+  redirect(getAdminPath(departmentSlug));
 }
 
 export async function reorderDepartmentSections(
@@ -533,8 +543,8 @@ export async function reorderDepartmentSections(
   const updates = orderedIds.map((id, index) => ({ id, position: index }));
   await reorderDbDepartmentSections(updates);
 
-  revalidatePath(`/odonates/${departmentSlug}`);
-  revalidatePath(`/admin/departements/${departmentSlug}`);
+  revalidatePath(getPublicPath(departmentSlug));
+  revalidatePath(getAdminPath(departmentSlug));
 }
 // !DEPARTMENT SECTION ACTIONS
 

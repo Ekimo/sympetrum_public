@@ -12,7 +12,9 @@ import { createDepartmentSection } from "../../../../libs/action";
 
 const AdminCreateDepartementSection: React.FC<{
   departmentSlug: string;
-}> = ({ departmentSlug }) => {
+  backUrl?: string;
+}> = ({ departmentSlug, backUrl }) => {
+  const sectionsUrl = backUrl || `/admin/departements/${departmentSlug}`;
   const editor = useEditor({
     extensions: [
       StarterKit,
@@ -50,7 +52,7 @@ const AdminCreateDepartementSection: React.FC<{
     <div className="col-lg-8 col-md-12">
       <div className="content-details">
         <Link
-          href={`/admin/departements/${departmentSlug}`}
+          href={sectionsUrl}
           style={{ marginBottom: "20px", display: "inline-block" }}
         >
           &larr; Retour aux sections

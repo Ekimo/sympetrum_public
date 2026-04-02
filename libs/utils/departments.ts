@@ -65,6 +65,18 @@ export const DEPARTMENTS: Record<string, DepartmentConfig> = {
       "Découvrez les différentes informations, espèces et synthèses sur les odonates de la Savoie.",
     categorySlug: "savoie",
   },
+  odorunalpes: {
+    slug: "odorunalpes",
+    name: "Odorunalpes",
+    pageTitle: "Odorunalpes",
+    metaDescription:
+      "Découvrez Odorunalpes, les sorties de prospection organisées par le Groupe Sympetrum en Rhône-Alpes.",
+    categorySlug: "odorunalpes",
+  },
 };
+
+export const DEPARTMENT_SLUGS = [
+  "ain", "ardeche", "drome", "haute-savoie", "isere", "loire", "rhone", "savoie",
+];
 
 export const VALID_DEPARTMENT_SLUGS = Object.keys(DEPARTMENTS);

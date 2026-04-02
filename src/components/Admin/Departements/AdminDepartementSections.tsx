@@ -32,10 +32,12 @@ function SortableItem({
   section,
   departmentSlug,
   onDelete,
+  adminBase,
 }: {
   section: DepartmentSection;
   departmentSlug: string;
   onDelete: (id: number) => Promise<void>;
+  adminBase: string;
 }) {
   const {
     attributes,
@@ -87,7 +89,7 @@ function SortableItem({
       <td>{section.title}</td>
       <td style={{ width: "120px", textAlign: "right" }}>
         <Link
-          href={`/admin/departements/${departmentSlug}/edit/${section.id}`}
+          href={`${adminBase}/edit/${section.id}`}
           className="table-action"
           style={{ marginRight: "10px" }}
         >
@@ -108,10 +110,13 @@ function SortableItem({
 export default function AdminDepartementSections({
   sections: initialSections,
   department,
+  backUrl,
 }: {
   sections: DepartmentSection[];
   department: DepartmentConfig;
+  backUrl?: string;
 }) {
+  const adminBase = backUrl || `/admin/departements/${department.slug}`;
   const [sections, setSections] = useState(initialSections);
   const router = useRouter();
 
@@ -158,19 +163,21 @@ export default function AdminDepartementSections({
         <div style={{ display: "flex", justifyContent: "space-between", alignItems: "center", marginBottom: "20px" }}>
           <h3>{department.pageTitle}</h3>
           <Link
-            href={`/admin/departements/${department.slug}/create`}
+            href={`${adminBase}/create`}
             className="btn btn-primary"
           >
             + Ajouter une section
           </Link>
         </div>
 
-        <Link
-          href="/admin/departements"
-          style={{ marginBottom: "20px", display: "inline-block" }}
-        >
-          &larr; Retour aux départements
-        </Link>
+        {!backUrl && (
+          <Link
+            href="/admin/departements"
+            style={{ marginBottom: "20px", display: "inline-block" }}
+          >
+            &larr; Retour aux départements
+          </Link>
+        )}
 
         <div className="table-responsive mt-20">
           <DndContext
@@ -198,6 +205,7 @@ export default function AdminDepartementSections({
                       section={section}
                       departmentSlug={department.slug}
                       onDelete={handleDelete}
+                      adminBase={adminBase}
                     />
                   ))}
                 </SortableContext>

@@ -46,6 +46,10 @@ export const menus = [
     ],
   },
   {
+    label: "Odorunalpes",
+    link: "/odorunalpes/",
+  },
+  {
     label: "Ressources",
     link: "#",
     submenu: [

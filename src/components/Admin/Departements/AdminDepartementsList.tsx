@@ -1,19 +1,21 @@
 import React from "react";
 import Link from "next/link";
-import { DEPARTMENTS } from "../../../../libs/utils/departments";
+import { DEPARTMENTS, DEPARTMENT_SLUGS } from "../../../../libs/utils/departments";
 
 export default function AdminDepartementsList({
   sectionCounts,
 }: {
   sectionCounts: Record<string, number>;
 }) {
+  const departments = DEPARTMENT_SLUGS.map((slug) => DEPARTMENTS[slug]);
+
   return (
     <div className="col-lg-8 col-md-12">
       <div className="content-details">
         <h3>Pages départements</h3>
         <p>Sélectionnez un département pour gérer ses sections.</p>
         <div className="row mt-20">
-          {Object.values(DEPARTMENTS).map((dept) => (
+          {departments.map((dept) => (
             <div key={dept.slug} className="col-lg-6 col-md-6 mb-20">
               <div
                 className="single-services-box"
