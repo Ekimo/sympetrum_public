@@ -26,6 +26,7 @@ import {
 } from "./data/admin/blog";
 import he from "he";
 import { addDbUserToNewsletter } from "./data/public/common";
+import prisma from "./utils/prisma";
 import { createDbCirculaire } from "./data/admin/circulaires";
 import {
   createDbDepartmentSection,
@@ -570,6 +571,47 @@ export async function reorderDepartmentSections(
   revalidatePath(getAdminPath(departmentSlug));
 }
 // !DEPARTMENT SECTION ACTIONS
+
+// NEWSLETTER ACTIONS
+export async function addNewsletterEmails(emails: string[]) {
+  const results = { added: 0, duplicates: 0, invalid: 0, errors: [] as string[] };
+
+  for (const raw of emails) {
+    const email = raw.trim().toLowerCase();
+    if (!email) continue;
+
+    if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) {
+      results.invalid++;
+      results.errors.push(`Adresse invalide : ${email}`);
+      continue;
+    }
+
+    try {
+      await addDbUserToNewsletter(email);
+      results.added++;
+    } catch (error) {
+      if (error instanceof Error && error.message.includes("déjà enregistrée")) {
+        results.duplicates++;
+      } else {
+        results.invalid++;
+        results.errors.push(`Erreur pour ${email}`);
+      }
+    }
+  }
+
+  revalidatePath("/admin/newsletter");
+  return results;
+}
+
+export async function removeNewsletterEmail(id: number) {
+  try {
+    await prisma.newsletter.delete({ where: { id } });
+  } catch (error) {
+    throw new Error("Erreur lors de la suppression.");
+  }
+  revalidatePath("/admin/newsletter");
+}
+// !NEWSLETTER ACTIONS
 
 // AUTHENTICATE ACTIONS
 export async function authUser(email: string, password: string) {
