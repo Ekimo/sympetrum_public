@@ -20,7 +20,6 @@ import {
   useSortable,
 } from "@dnd-kit/sortable";
 import { CSS } from "@dnd-kit/utilities";
-import "../../../../public/styles/admin.css";
 import { DepartmentSection, DepartmentConfig } from "../../../../libs/utils/definitions";
 import {
   reorderDepartmentSections,

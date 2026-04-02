@@ -58,12 +58,12 @@ const FormCreateOdonateSchema = z.object({
 const CreateOdonate = FormCreateOdonateSchema.omit({});
 // **************************************
 const FormCreateArticleSchema = z.object({
-  title: z.string(),
-  url: z.string(),
+  title: z.string().nullable().transform((v) => v ?? ""),
+  url: z.string().nullable().transform((v) => v ?? ""),
   category_id: z.coerce.number(),
-  intro: z.string(),
+  intro: z.string().nullable().transform((v) => v ?? ""),
 });
-const CreateArticle = FormCreateArticleSchema.omit({});
+const CreateArticle = FormCreateArticleSchema;
 // **************************************
 const FormCreateCirculaireSchema = z.object({
   title: z.string(),
@@ -104,6 +104,16 @@ const FormSettingsSchema = z.object({
   odonates_data: z.coerce.number(),
   actions: z.coerce.number(),
   posted_publications: z.coerce.number(),
+  youtube_url: z.string(),
+  team_image_1: z.string(),
+  team_title_1: z.string(),
+  team_content_1: z.string(),
+  team_image_2: z.string(),
+  team_title_2: z.string(),
+  team_content_2: z.string(),
+  team_image_3: z.string(),
+  team_title_3: z.string(),
+  team_content_3: z.string(),
 });
 const UpdateSettings = FormSettingsSchema.omit({});
 // **************************************
@@ -297,15 +307,24 @@ export async function addUserToNewsletterList(formData: FormData) {
 
 // UPDATE ACTIONS
 export async function updateSettings(formData: FormData) {
-  const { members, odonates_data, actions, posted_publications } =
-    UpdateSettings.parse({
-      members: formData.get("members"),
-      odonates_data: formData.get("odonates_data"),
-      actions: formData.get("actions"),
-      posted_publications: formData.get("posted_publications"),
-    });
+  const data = UpdateSettings.parse({
+    members: formData.get("members"),
+    odonates_data: formData.get("odonates_data"),
+    actions: formData.get("actions"),
+    posted_publications: formData.get("posted_publications"),
+    youtube_url: formData.get("youtube_url"),
+    team_image_1: formData.get("team_image_1"),
+    team_title_1: formData.get("team_title_1"),
+    team_content_1: formData.get("team_content_1"),
+    team_image_2: formData.get("team_image_2"),
+    team_title_2: formData.get("team_title_2"),
+    team_content_2: formData.get("team_content_2"),
+    team_image_3: formData.get("team_image_3"),
+    team_title_3: formData.get("team_title_3"),
+    team_content_3: formData.get("team_content_3"),
+  });
 
-  await updateDbSettings(members, odonates_data, actions, posted_publications);
+  await updateDbSettings(data);
 
   revalidatePath("/admin/parametres");
   revalidatePath("/");

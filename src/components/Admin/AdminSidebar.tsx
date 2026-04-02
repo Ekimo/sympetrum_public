@@ -69,7 +69,7 @@ export default function AdminSidebar({ role }: { role: number }) {
             {role == 0 && (
               <>
                 <li>
-                  <Link href="/admin/parametres">Paramètres généraux</Link>
+                  <Link href="/admin/parametres">Page d&apos;accueil</Link>
                 </li>
                 <li>
                   <button onClick={handleCsvDownload}>Data newsletter</button>

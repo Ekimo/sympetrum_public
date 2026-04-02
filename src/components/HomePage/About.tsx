@@ -6,13 +6,14 @@ import Image from "next/image";
 
 import aboutImg from "../../../public/images/about-img.jpg";
 
-const About: React.FC = () => {
+const About: React.FC<{ youtubeUrl?: string }> = ({ youtubeUrl }) => {
   const [toggler, setToggler] = useState(false);
+  const videoUrl = youtubeUrl || "https://www.youtube.com/embed/oc4gkf7YrWs";
   return (
     <>
       <FsLightbox
         toggler={toggler}
-        sources={["https://www.youtube.com/embed/oc4gkf7YrWs"]}
+        sources={[videoUrl]}
       />
 
       <section className="about-area ptb-100" id="discover">

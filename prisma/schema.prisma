@@ -52,6 +52,16 @@ model Setting {
   odonates_data Int
   actions Int
   posted_publications Int
+  youtube_url String  @default("https://www.youtube.com/embed/oc4gkf7YrWs") @db.VarChar(2000)
+  team_image_1   String  @default("/images/team/team11.jpg") @db.VarChar(500)
+  team_title_1   String  @default("Membres du bureau") @db.VarChar(200)
+  team_content_1 String  @db.Text
+  team_image_2   String  @default("/images/team/team11.jpg") @db.VarChar(500)
+  team_title_2   String  @default("Membres du CA") @db.VarChar(200)
+  team_content_2 String  @db.Text
+  team_image_3   String  @default("/images/team/team11.jpg") @db.VarChar(500)
+  team_title_3   String  @default("Coordinateurs") @db.VarChar(200)
+  team_content_3 String  @db.Text
   @@map("setting")
 }
 

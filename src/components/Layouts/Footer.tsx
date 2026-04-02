@@ -41,6 +41,22 @@ const Footer: React.FC = () => {
                       <i className="fa-brands fa-instagram"></i>
                     </a>
                   </li>
+                  <li>
+                    <a
+                      href="https://www.linkedin.com/company/groupe-sympetrum/"
+                      target="_blank"
+                    >
+                      <i className="fa-brands fa-linkedin-in"></i>
+                    </a>
+                  </li>
+                  <li>
+                    <a
+                      href="https://www.youtube.com/@groupesympetrum"
+                      target="_blank"
+                    >
+                      <i className="fa-brands fa-youtube"></i>
+                    </a>
+                  </li>
                 </ul>
                 <Link
                   href="https://www.helloasso.com/associations/groupe-sympetrum-grpls"

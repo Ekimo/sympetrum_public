@@ -50,6 +50,16 @@ export type FactType = {
   odonates_data: number;
   actions: number;
   posted_publications: number;
+  youtube_url: string;
+  team_image_1: string;
+  team_title_1: string;
+  team_content_1: string;
+  team_image_2: string;
+  team_title_2: string;
+  team_content_2: string;
+  team_image_3: string;
+  team_title_3: string;
+  team_content_3: string;
 };
 
 export type Article = {

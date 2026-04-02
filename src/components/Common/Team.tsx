@@ -5,104 +5,15 @@ import { Swiper, SwiperSlide } from "swiper/react";
 import { Autoplay, Navigation } from "swiper/modules";
 import Image from "next/image";
 
-const teamMemberData = [
-  {
-    image: "/images/team/team11.jpg",
-    name: "Membres du bureau",
-    designation: [
-      {
-        titre: "Président",
-        coordinateurs: "Samuel MESNIL",
-      },
-      {
-        titre: "Vice-Présidente",
-        coordinateurs: "Marie LAMOUILLE-HEBERT",
-      },
-      {
-        titre: "Trésorier",
-        coordinateurs: "Alain LADET",
-      },
-      {
-        titre: "Trésorier adjoint",
-        coordinateurs: "Nicolas SOUVIGNET",
-      },
-      {
-        titre: "Secrétaire",
-        coordinateurs: "Macha JOANIN",
-      },
-      {
-        titre: "Secrétaire adjoint",
-        coordinateurs: "Camille LE MERRER",
-      },
-    ],
-  },
-  {
-    image: "/images/team/team11.jpg",
-    name: "Membres du CA",
-    designation: [
-      {
-        titre: null,
-        coordinateurs: "Martin BOLENDER",
-      },
-      {
-        titre: null,
-        coordinateurs: "David LECLERC",
-      },
-      {
-        titre: null,
-        coordinateurs: "Thomas GRUET",
-      },
-      {
-        titre: null,
-        coordinateurs: "Loup NOALLY",
-      },
-    ],
-  },
-  {
-    image: "/images/team/team11.jpg",
-    name: "Coordinateurs",
-    designation: [
-      {
-        titre: "Ain",
-        coordinateurs:
-          "Martin BOLENDER, Régis KRIEG-JACQUIER, Aurélien BOURDIN,  Thomas GRUET",
-      },
-      {
-        titre: "Ardèche",
-        coordinateurs: "Alain LADET",
-      },
-      {
-        titre: "Drôme",
-        coordinateurs:
-          "Jean-Michel FATON, Bernard PONT, Claude SANITAS, Camille LE MERRER",
-      },
-      {
-        titre: "Isère",
-        coordinateurs:
-          "Nicolas SOUVIGNET, Angélique PRUVOST, Cedric JACQUIER, Nadine CATRY",
-      },
-      {
-        titre: "Loire",
-        coordinateurs: "Loup NOALLY",
-      },
-      {
-        titre: "Rhône",
-        coordinateurs:
-          "Hugo TAURU, Julien BOUNIOL, Samuel MESNIL, Hugo ROBUSCHI",
-      },
-      {
-        titre: "Savoie",
-        coordinateurs: "Poste à pourvoir",
-      },
-      {
-        titre: "Haute-Savoie",
-        coordinateurs: "Marie LAMOUILLE-HÉBERT, David LECLERC, Macha JOANIN",
-      },
-    ],
-  },
-];
+const Team: React.FC<{
+  teamData?: {
+    image: string;
+    name: string;
+    content: string;
+  }[];
+}> = ({ teamData }) => {
+  const cards = teamData || [];
 
-const Team: React.FC = () => {
   return (
     <>
       <div className="pt-100 pb-70">
@@ -138,39 +49,36 @@ const Team: React.FC = () => {
             modules={[Autoplay, Navigation]}
             className="team-slider"
           >
-            {teamMemberData &&
-              teamMemberData.map((value, i) => (
-                <SwiperSlide key={i}>
-                  <div className="team-card text-center">
-                    <div className="team-img">
-                      <Image
-                        src={value.image}
-                        alt="Image"
-                        width={510}
-                        height={550}
-                      />
+            {cards.map((value, i) => (
+              <SwiperSlide key={i}>
+                <div className="team-card text-center">
+                  <div className="team-img">
+                    <Image
+                      src={value.image}
+                      alt={value.name}
+                      width={510}
+                      height={550}
+                    />
 
-                      <div className="social-links">
-                        <div className="d-table">
-                          <div className="d-table-cell">
-                            {value.designation.map((d, j) => (
-                              <div key={j}>
-                                {d.titre && <strong>{d.titre} :</strong>}{" "}
-                                {d.coordinateurs}
-                                <br />
-                              </div>
-                            ))}
-                          </div>
+                    <div className="social-links">
+                      <div className="d-table">
+                        <div className="d-table-cell">
+                          <div
+                            dangerouslySetInnerHTML={{
+                              __html: value.content,
+                            }}
+                          />
                         </div>
                       </div>
                     </div>
-
-                    <div className="team-caption">
-                      <h3>{value.name}</h3>
-                    </div>
                   </div>
-                </SwiperSlide>
-              ))}
+
+                  <div className="team-caption">
+                    <h3>{value.name}</h3>
+                  </div>
+                </div>
+              </SwiperSlide>
+            ))}
           </Swiper>
         </div>
       </div>

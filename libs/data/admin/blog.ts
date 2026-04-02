@@ -90,18 +90,20 @@ export async function updateDbArticle(
   isDraft: boolean = false
 ) {
   try {
-    if (
-      !id ||
-      !title.trim() ||
-      !url.trim() ||
-      category_id == null ||
-      !intro.trim() ||
-      !content.trim()
-    ) {
-      throw new Error("Tous les champs doivent être remplis correctement.");
-    }
-    if (title.trim().length >= 100 || intro.trim().length >= 160) {
-      throw new Error("Titre ou texte d'intro trop long");
+    if (!isDraft) {
+      if (
+        !id ||
+        !title.trim() ||
+        !url.trim() ||
+        category_id == null ||
+        !intro.trim() ||
+        !content.trim()
+      ) {
+        throw new Error("Tous les champs doivent être remplis correctement.");
+      }
+      if (title.trim().length >= 100 || intro.trim().length >= 160) {
+        throw new Error("Titre ou texte d'intro trop long");
+      }
     }
     const updatedArticle = await prisma.article.update({
       where: {
@@ -142,17 +144,23 @@ export async function createDbArticle(
   isDraft: boolean = false
 ) {
   try {
-    if (
-      !title.trim() ||
-      category_id == null ||
-      !intro.trim() ||
-      !content.trim()
-    ) {
-      throw new Error("Tous les champs doivent être remplis correctement.");
+    if (!isDraft) {
+      if (
+        !title.trim() ||
+        category_id == null ||
+        !intro.trim() ||
+        !content.trim()
+      ) {
+        throw new Error("Tous les champs doivent être remplis correctement.");
+      }
+
+      if (title.trim().length >= 100 || intro.trim().length >= 160) {
+        throw new Error("Titre ou texte d'intro trop long");
+      }
     }
 
-    if (title.trim().length >= 100 || intro.trim().length >= 160) {
-      throw new Error("Titre ou texte d'intro trop long");
+    if (!title.trim()) {
+      title = "Brouillon " + new Date().toLocaleDateString("fr-FR");
     }
 
     if (!url.trim()) {
