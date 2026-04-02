@@ -67,6 +67,11 @@ export const menus = [
         link: "https://odonata.sympetrum.fr/",
         external: true,
       },
+      {
+        label: "Documents de l'asso",
+        link: "https://drive.google.com/drive/folders/1s9BwkbbYpKmVGNpFxU8KGPeKV2BJKTTZ",
+        external: true,
+      },
     ],
   },
   {
