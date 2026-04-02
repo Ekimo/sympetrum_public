@@ -20,6 +20,7 @@ import {
   useSortable,
 } from "@dnd-kit/sortable";
 import { CSS } from "@dnd-kit/utilities";
+import "../../../../public/styles/admin.css";
 import { DepartmentSection, DepartmentConfig } from "../../../../libs/utils/definitions";
 import {
   reorderDepartmentSections,
@@ -126,13 +127,16 @@ export default function AdminDepartementSections({
       setSections((prev) => prev.filter((s) => s.id !== id));
       toast.success("Section supprimée");
       router.refresh();
-    } catch {
+    } catch (error) {
+      console.error("Delete error:", error);
       toast.error("Erreur lors de la suppression");
     }
   };
 
   const sensors = useSensors(
-    useSensor(PointerSensor),
+    useSensor(PointerSensor, {
+      activationConstraint: { distance: 8 },
+    }),
     useSensor(KeyboardSensor, {
       coordinateGetter: sortableKeyboardCoordinates,
     })
