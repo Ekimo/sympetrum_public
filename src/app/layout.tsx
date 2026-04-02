@@ -1,19 +1,10 @@
 import React from "react";
-import "../../public/styles/bootstrap.min.css";
-import "../../public/styles/animate.min.css";
 import "animate.css";
-import "../../public/styles/all.min.css";
-import "../../public/styles/pe-icon-7-stroke.css";
 import "react-accessible-accordion/dist/fancy-example.css";
 import "swiper/css";
 import "swiper/css/bundle";
 import "react-toastify/dist/ReactToastify.css";
 import { ToastContainer } from "react-toastify";
-
-// Global Style
-import "../../public/styles/style.css";
-import "../../public/styles/responsive.css";
-import "./globals.css";
 
 import type { Metadata } from "next";
 import { Inter, Roboto } from "next/font/google";
@@ -50,6 +41,15 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="fr">
+      <head>
+        <link rel="stylesheet" href="/styles/bootstrap.min.css" />
+        <link rel="stylesheet" href="/styles/animate.min.css" />
+        <link rel="stylesheet" href="/styles/all.min.css" />
+        <link rel="stylesheet" href="/styles/pe-icon-7-stroke.css" />
+        <link rel="stylesheet" href="/styles/style.css" />
+        <link rel="stylesheet" href="/styles/responsive.css" />
+        <link rel="stylesheet" href="/styles/admin.css" />
+      </head>
       <body className={`${inter.variable} ${saira.variable}`}>
         {children}
         <Footer />

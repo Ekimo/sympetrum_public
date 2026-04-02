@@ -1,7 +1,6 @@
 "use client";
 
 import React from "react";
-import "../../../public/styles/admin.css";
 import { confirmAlert } from "react-confirm-alert";
 import { toast } from "react-toastify";
 
