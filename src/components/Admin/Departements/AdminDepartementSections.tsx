@@ -2,6 +2,7 @@
 
 import React, { useState } from "react";
 import Link from "next/link";
+import { useRouter } from "next/navigation";
 import {
   DndContext,
   closestCenter,
@@ -30,9 +31,11 @@ import { confirmAlert } from "react-confirm-alert";
 function SortableItem({
   section,
   departmentSlug,
+  onDelete,
 }: {
   section: DepartmentSection;
   departmentSlug: string;
+  onDelete: (id: number) => Promise<void>;
 }) {
   const {
     attributes,
@@ -54,15 +57,7 @@ function SortableItem({
       buttons: [
         {
           label: "Oui",
-          onClick: async () => {
-            try {
-              await removeDepartmentSection(section.id, departmentSlug);
-              toast.success("Section supprimée");
-              window.location.reload();
-            } catch {
-              toast.error("Erreur lors de la suppression");
-            }
-          },
+          onClick: () => onDelete(section.id),
         },
         { label: "Non", onClick: () => {} },
       ],
@@ -118,6 +113,18 @@ export default function AdminDepartementSections({
   department: DepartmentConfig;
 }) {
   const [sections, setSections] = useState(initialSections);
+  const router = useRouter();
+
+  const handleDelete = async (id: number) => {
+    try {
+      await removeDepartmentSection(id, department.slug);
+      setSections((prev) => prev.filter((s) => s.id !== id));
+      toast.success("Section supprimée");
+      router.refresh();
+    } catch {
+      toast.error("Erreur lors de la suppression");
+    }
+  };
 
   const sensors = useSensors(
     useSensor(PointerSensor),
@@ -190,6 +197,7 @@ export default function AdminDepartementSections({
                       key={section.id}
                       section={section}
                       departmentSlug={department.slug}
+                      onDelete={handleDelete}
                     />
                   ))}
                 </SortableContext>
