@@ -86,7 +86,8 @@ export async function updateDbArticle(
   intro: string,
   tags: { id: number }[],
   content: string,
-  authorRole: number
+  authorRole: number,
+  isDraft: boolean = false
 ) {
   try {
     if (
@@ -116,7 +117,9 @@ export async function updateDbArticle(
           set: [],
           connect: tags,
         },
-        waiting_for_approbation: authorRole === 2,
+        waiting_for_approbation: isDraft ? false : authorRole === 2,
+        is_draft: isDraft,
+        publication_date: isDraft ? undefined : new Date(),
       },
     });
 
@@ -135,7 +138,8 @@ export async function createDbArticle(
   tags: { id: number }[],
   content: string,
   authorId: number,
-  authorRole: number
+  authorRole: number,
+  isDraft: boolean = false
 ) {
   try {
     if (
@@ -170,7 +174,8 @@ export async function createDbArticle(
           connect: tags,
         },
         authorId,
-        waiting_for_approbation: authorRole === 2,
+        waiting_for_approbation: isDraft ? false : authorRole === 2,
+        is_draft: isDraft,
       },
     });
 

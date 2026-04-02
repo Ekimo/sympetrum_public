@@ -34,10 +34,12 @@ export default async function AdminBlogTable({
                 <th scope="row">{d.id}</th>
                 <td>{d.title}</td>
                 <td>
-                  {d.waiting_for_approbation ? (
-                    <i className="fa fa-solid fa-hourglass table-action"></i>
+                  {d.is_draft ? (
+                    <span style={{ color: "#999", fontSize: "12px" }}>Brouillon</span>
+                  ) : d.waiting_for_approbation ? (
+                    <i className="fa fa-solid fa-hourglass table-action" title="En attente d'approbation"></i>
                   ) : (
-                    <i className="fa fa-solid fa-check table-action"></i>
+                    <i className="fa fa-solid fa-check table-action" title="Publié"></i>
                   )}
                 </td>
                 <td className="right-aligned">

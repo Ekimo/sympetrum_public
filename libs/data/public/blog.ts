@@ -24,6 +24,7 @@ export async function fetchFilteredArticle(query: string, currentPage: number) {
       WHERE 
         article.visible = true AND
         article.waiting_for_approbation = false AND
+        article.is_draft = false AND
         (article.title LIKE ${searchString} OR 
         article.intro LIKE ${searchString} OR 
         article.content LIKE ${searchString})
@@ -58,6 +59,7 @@ export async function fetchArticlePages(query: string) {
         WHERE
           article.visible = true AND
           article.waiting_for_approbation = false AND
+          article.is_draft = false AND
           (title LIKE ${searchString} OR
           intro LIKE ${searchString} OR
           content LIKE ${searchString})
@@ -79,6 +81,7 @@ export async function fetchLastArticles() {
       where: {
         visible: true,
         waiting_for_approbation: false,
+        is_draft: false,
       },
       include: {
         category: true,
@@ -126,6 +129,7 @@ export async function fetchOneTag(slug: string) {
           where: {
             visible: true,
             waiting_for_approbation: false,
+            is_draft: false,
           },
           include: {
             category: true, // Inclure les détails de la catégorie
@@ -155,6 +159,7 @@ export async function fetchOneCategory(slug: string) {
           where: {
             visible: true,
             waiting_for_approbation: false,
+            is_draft: false,
           },
           include: {
             category: true, // Inclure les détails de la catégorie
@@ -184,6 +189,7 @@ export async function fetchLastByCategory(slug: string) {
           where: {
             visible: true,
             waiting_for_approbation: false,
+            is_draft: false,
           },
           include: {
             category: true, // Inclure les détails de la catégorie
@@ -209,6 +215,7 @@ export async function fetchArticlePagesByCategory(id: number) {
       where: {
         visible: true,
         waiting_for_approbation: false,
+        is_draft: false,
         category_id: id,
       },
     });
@@ -227,6 +234,7 @@ export async function fetchArticlePagesByTag(id: number) {
       where: {
         visible: true,
         waiting_for_approbation: false,
+        is_draft: false,
         tags: {
           some: {
             id: id,
@@ -248,6 +256,8 @@ export async function fetchOneArticleBySlug(slug: string) {
     const article = await prisma.article.findUnique({
       where: {
         visible: true,
+        waiting_for_approbation: false,
+        is_draft: false,
         slug,
       },
       include: {

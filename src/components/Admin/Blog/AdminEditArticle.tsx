@@ -76,20 +76,20 @@ const AdminEditArticle: React.FC<{
     setTagList(selectedList);
   };
 
-  const handleSubmit = async (event: React.FormEvent<HTMLFormElement>) => {
-    event.preventDefault();
-    const formData = new FormData(event.currentTarget);
+  const handleSubmit = async (isDraft: boolean) => {
+    const form = document.querySelector("form") as HTMLFormElement;
+    const formData = new FormData(form);
     const content = editor?.getHTML();
     const tags = tagList;
 
-    if (!content) {
+    if (!isDraft && !content) {
       toast.error("Merci de saisir du contenu pour votre article");
       return;
     }
 
     try {
-      await updateArticle(article.id, formData, content, tags, authorRole);
-      toast.success("Article modifié avec succès");
+      await updateArticle(article.id, formData, content || "", tags, authorRole, isDraft);
+      toast.success(isDraft ? "Brouillon enregistré" : "Article modifié avec succès");
     } catch (error) {
       const errorMessage =
         error instanceof Error
@@ -104,7 +104,7 @@ const AdminEditArticle: React.FC<{
       <div className="col-lg-8 col-md-12">
         <div className="content-details">
           <div className="article-content">
-            <form onSubmit={handleSubmit}>
+            <form onSubmit={(e) => e.preventDefault()}>
               <div className="contact-form-box">
                 <div className="row">
                   <div className="col-lg-12">
@@ -201,8 +201,20 @@ const AdminEditArticle: React.FC<{
 
               <Tiptap editor={editor} />
 
-              <button type="submit" className="btn btn-primary mt-10">
-                Mettre à jour
+              <button
+                type="button"
+                onClick={() => handleSubmit(true)}
+                className="btn btn-secondary mt-10"
+                style={{ marginRight: "10px" }}
+              >
+                Enregistrer en brouillon
+              </button>
+              <button
+                type="button"
+                onClick={() => handleSubmit(false)}
+                className="btn btn-primary mt-10"
+              >
+                {article.is_draft ? "Publier" : "Mettre à jour"}
               </button>
             </form>
           </div>

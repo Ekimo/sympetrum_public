@@ -62,6 +62,7 @@ export type Article = {
   publication_date: Date;
   slug: string;
   tags: Tag[];
+  is_draft: boolean;
 };
 
 export type ArticleWithoutTag = {
@@ -107,6 +108,7 @@ export type ArticleWithCategoryName = {
   category_name: string;
   category_slug: string;
   waiting_for_approbation: boolean;
+  is_draft: boolean;
 };
 
 export type LastArticle = {

@@ -76,6 +76,7 @@ model Article {
   tags            Tag[]
   visible        Boolean @default(true)
   waiting_for_approbation Boolean @default(false)
+  is_draft       Boolean @default(false)
   circulaires Circulaire[]
   author User @relation(fields: [authorId], references: [id])
   authorId Int @default(1)

@@ -230,7 +230,8 @@ export async function createArticle(
   content: string,
   tags: Tag[],
   authorId: number,
-  authorRole: number
+  authorRole: number,
+  isDraft: boolean = false
 ) {
   const { title, url, category_id, intro } = CreateArticle.parse({
     title: formData.get("title"),
@@ -250,7 +251,8 @@ export async function createArticle(
     tagIdsArray,
     escapedContent,
     authorId,
-    authorRole
+    authorRole,
+    isDraft
   );
   revalidatePath("/", "layout");
   revalidatePath("/blog");
@@ -405,7 +407,8 @@ export async function updateArticle(
   formData: FormData,
   content: string,
   tags: Tag[],
-  authorRole: number
+  authorRole: number,
+  isDraft: boolean = false
 ) {
   const { title, url, category_id, intro } = CreateArticle.parse({
     title: formData.get("title"),
@@ -425,7 +428,8 @@ export async function updateArticle(
     intro,
     tagIdsArray,
     escapedContent,
-    authorRole
+    authorRole,
+    isDraft
   );
 
   revalidatePath("/", "layout");
