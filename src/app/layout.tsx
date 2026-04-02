@@ -1,4 +1,5 @@
 import React from "react";
+import "../../public/styles/pe-icon-7-stroke.css";
 import "animate.css";
 import "react-accessible-accordion/dist/fancy-example.css";
 import "swiper/css";
@@ -45,7 +46,6 @@ export default function RootLayout({
         <link rel="stylesheet" href="/styles/bootstrap.min.css" />
         <link rel="stylesheet" href="/styles/animate.min.css" />
         <link rel="stylesheet" href="/styles/all.min.css" />
-        <link rel="stylesheet" href="/styles/pe-icon-7-stroke.css" />
         <link rel="stylesheet" href="/styles/style.css" />
         <link rel="stylesheet" href="/styles/responsive.css" />
         <link rel="stylesheet" href="/styles/admin.css" />

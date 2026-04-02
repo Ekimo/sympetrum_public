@@ -15,7 +15,7 @@ export default async function Page() {
     <AdminDepartementSections
       sections={sections}
       department={department}
-      backUrl="/admin"
+      backUrl="/admin/odorunalpes"
     />
   );
 }

@@ -1,6 +1,6 @@
 "use client";
 
-import { ChangeEvent, useState } from "react";
+import { ChangeEvent, useState, useRef } from "react";
 import Multiselect from "multiselect-react-dropdown";
 import Tiptap from "@/components/Common/Tiptap";
 import { useEditor } from "@tiptap/react";
@@ -39,6 +39,7 @@ const AdminCreateArticle: React.FC<{
   const [introText, setIntroText] = useState("");
   const [charsIntroLeft, setCharsIntroLeft] = useState(maxIntroLength);
   const [tagList, setTagList] = useState([]);
+  const formRef = useRef<HTMLFormElement>(null);
 
   const editor = useEditor({
     extensions: [
@@ -78,8 +79,8 @@ const AdminCreateArticle: React.FC<{
   };
 
   const handleSubmit = async (isDraft: boolean) => {
-    const form = document.querySelector("form") as HTMLFormElement;
-    const formData = new FormData(form);
+    if (!formRef.current) return;
+    const formData = new FormData(formRef.current);
     const content = editor?.getHTML();
     const tags = tagList;
 
@@ -112,7 +113,7 @@ const AdminCreateArticle: React.FC<{
       <div className="col-lg-8 col-md-12">
         <div className="content-details">
           <div className="article-content">
-            <form onSubmit={(e) => e.preventDefault()}>
+            <form ref={formRef} onSubmit={(e) => e.preventDefault()}>
               <div className="contact-form-box">
                 <div className="row">
                   <div className="col-lg-12">
