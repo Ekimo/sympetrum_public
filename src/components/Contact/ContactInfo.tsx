@@ -2,7 +2,7 @@
 
 import React from "react";
 
-const ContactInfo: React.FC = () => {
+const ContactInfo: React.FC<{ address?: string }> = ({ address }) => {
   return (
     <>
       <div className="contact-info-area pt-100 pb-70">
@@ -28,7 +28,7 @@ const ContactInfo: React.FC = () => {
                   <i className="pe-7s-map-2"></i>
                 </div>
                 <h3>Par courrier</h3>
-                <p>7 rue de la Synagogue, 26400 Aouste-sur-Sye</p>
+                <p>{address || "192 impasse du Margellier, 07340 Limony"}</p>
               </div>
             </div>
           </div>

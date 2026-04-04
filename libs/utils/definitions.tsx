@@ -51,6 +51,7 @@ export type FactType = {
   actions: number;
   posted_publications: number;
   youtube_url: string;
+  address: string;
   team_image_1: string;
   team_title_1: string;
   team_content_1: string;

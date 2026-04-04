@@ -53,6 +53,7 @@ model Setting {
   actions Int
   posted_publications Int
   youtube_url String  @default("https://www.youtube.com/embed/oc4gkf7YrWs") @db.VarChar(2000)
+  address     String  @default("192 impasse du Margellier, 07340 Limony") @db.VarChar(500)
   team_image_1   String  @default("/images/team/team11.jpg") @db.VarChar(500)
   team_title_1   String  @default("Membres du bureau") @db.VarChar(200)
   team_content_1 String  @db.Text

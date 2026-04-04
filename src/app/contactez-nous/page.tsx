@@ -5,6 +5,7 @@ import ContactForm from "../../components/Contact/ContactForm";
 import Newsletter from "../../components/Common/Newsletter";
 import Navbar from "@/components/Layouts/Navbar";
 import { Metadata } from "next";
+import { fetchFacts } from "../../../libs/data/public/common";
 
 export const metadata: Metadata = {
   title: "Groupe Sympetrum - Contactez-nous",
@@ -12,7 +13,8 @@ export const metadata: Metadata = {
     "Consultez notre page de contact pour toute question ou information concernant l'association Sympetrum. Nous sommes là pour vous aider.",
 };
 
-export default function Page() {
+export default async function Page() {
+  const settings = await fetchFacts();
   return (
     <>
       <Navbar />
@@ -21,7 +23,7 @@ export default function Page() {
         BGImage="/images/page-banner1.jpg"
       />
 
-      <ContactInfo />
+      <ContactInfo address={settings?.address} />
 
       <ContactForm />
 

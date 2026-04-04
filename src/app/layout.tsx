@@ -12,6 +12,7 @@ import { Inter, Roboto } from "next/font/google";
 import AosAnimation from "@/components/Layouts/AosAnimation";
 import GoTop from "@/components/Layouts/GoTop";
 import Footer from "@/components/Layouts/Footer";
+import { fetchFacts } from "../../libs/data/public/common";
 
 // For all body text font
 const inter = Inter({
@@ -35,11 +36,12 @@ export const metadata: Metadata = {
     "Le Groupe de recherche et de protection des libellules Sympetrum est une association qui se consacre à la connaissance et la conservation des libellules ainsi que leurs habitats, les zones humides.",
 };
 
-export default function RootLayout({
+export default async function RootLayout({
   children,
 }: Readonly<{
   children: React.ReactNode;
 }>) {
+  const settings = await fetchFacts();
   return (
     <html lang="fr">
       <head>
@@ -52,7 +54,7 @@ export default function RootLayout({
       </head>
       <body className={`${inter.variable} ${saira.variable}`}>
         {children}
-        <Footer />
+        <Footer address={settings?.address} />
         <AosAnimation />
         <GoTop />
         <ToastContainer />

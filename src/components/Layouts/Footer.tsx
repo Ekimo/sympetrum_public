@@ -3,7 +3,7 @@
 import React from "react";
 import Link from "next/link";
 
-const Footer: React.FC = () => {
+const Footer: React.FC<{ address?: string }> = ({ address }) => {
   const currentYear = new Date().getFullYear();
   return (
     <>
@@ -87,6 +87,9 @@ const Footer: React.FC = () => {
                     </Link>
                   </li>
                   <li>
+                    <Link href="/odorunalpes/">Odorunalpes</Link>
+                  </li>
+                  <li>
                     <Link href="/bibliographie/">Bibliographie</Link>
                   </li>
                   <li>
@@ -156,8 +159,8 @@ const Footer: React.FC = () => {
 
                 <ul className="get-in-touch">
                   <li>
-                    <i className="fa-solid fa-location-dot"></i> 7 RUE DE LA
-                    SYNAGOGUE, 26400 AOUSTE-SUR-SYE
+                    <i className="fa-solid fa-location-dot"></i>{" "}
+                    {address || "192 impasse du Margellier, 07340 Limony"}
                   </li>
                   <li>
                     <i className="fa-solid fa-envelope"></i>

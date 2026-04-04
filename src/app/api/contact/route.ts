@@ -1,13 +1,15 @@
 import { NextRequest, NextResponse } from "next/server";
 import nodemailer from "nodemailer";
 
+const { BREVO_USER, BREVO_PWD, BREVO_SERVER } = process.env;
+
 const transporter = nodemailer.createTransport({
-  host: "smtp.imitate.email",
+  host: BREVO_SERVER,
   port: 587,
   secure: false,
   auth: {
-    user: "a94f9ad1-f9ea-48e2-ae21-018dc6aed67c",
-    pass: "f39f5429-2a11-4b22-891d-a719003a86c0",
+    user: BREVO_USER,
+    pass: BREVO_PWD,
   },
 });
 
@@ -24,16 +26,16 @@ export async function POST(request: NextRequest) {
     };
 
     const data = {
-      from: "sympetrum@theomaillard69-personal-nwbz.imitate.email",
-      to: "theomaillard69@gmail.com",
+      from: "noreply@sympetrum.fr",
+      to: "contact.sympetrum@gmail.com",
       subject: "Mail depuis le site sympetrum",
       text: message?.toString(),
       html: `
-            <b>From:</b> ${name} <br /> 
-            <b>Email:</b> ${email} <br /> 
-            <b>Number:</b> ${number} <br /> 
-            <b>Subject:</b> ${subject} <br /> 
-            <b>Message:</b> ${message} 
+            <b>De :</b> ${name} <br />
+            <b>Email :</b> ${email} <br />
+            <b>Téléphone :</b> ${number} <br />
+            <b>Sujet :</b> ${subject} <br />
+            <b>Message :</b> ${message}
         `,
     };
 

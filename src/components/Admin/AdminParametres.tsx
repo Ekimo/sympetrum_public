@@ -89,6 +89,26 @@ const AdminParametres: React.FC<{ facts: FactType }> = ({ facts }) => {
                   </div>
 
                   <hr style={{ margin: "20px 0" }} />
+                  <h4>Adresse postale</h4>
+                  <p style={{ color: "#666", fontSize: "14px" }}>
+                    Affichée dans le footer et sur la page contact.
+                  </p>
+                  <div className="row">
+                    <div className="col-lg-12">
+                      <div className="form-group">
+                        <input
+                          defaultValue={facts?.address || ""}
+                          type="text"
+                          name="address"
+                          placeholder="192 impasse du Margellier, 07340 Limony"
+                          className="form-control"
+                          required
+                        />
+                      </div>
+                    </div>
+                  </div>
+
+                  <hr style={{ margin: "20px 0" }} />
                   <h4>Vidéo</h4>
                   <div className="row">
                     <div className="col-lg-12">
